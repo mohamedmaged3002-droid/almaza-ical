@@ -21,13 +21,15 @@ INDEX_JSON = os.path.join(HERE, "docs", "index.json")
 OUT = os.path.join(HERE, "Almaza Master.xlsx")
 
 ICAL_BASE = "https://mohamedmaged3002-droid.github.io/almaza-ical/"
-PHOTO_BASE = "https://photos.bluekeys.co/almaza/"
+# Browsable per-unit photo gallery on Pages (R2 has no folder listing). The
+# gallery img src points at the current photo URLs; swap to R2 once uploaded.
+GALLERY_BASE = "https://mohamedmaged3002-droid.github.io/almaza-ical/photos/"
 
 COLUMNS = [
     "source_code", "operator_unit_code", "wp_post_id",
     "lodgify_property_id", "lodgify_room_id", "title", "sub_community",
     "property_type", "guests_bluekeys", "guests_operator", "bedrooms", "beds",
-    "bathrooms", "description", "amenities", "photo_folder", "photo_count",
+    "bathrooms", "description", "amenities", "photo_gallery", "photo_count",
     "rate_default", "rate_periods", "currency", "min_stay", "checkin_time",
     "checkout_time", "ical_url", "lat", "lng", "source_url", "status",
 ]
@@ -93,7 +95,7 @@ def row_for(u, min_stays):
         u.get("bathrooms"),
         u.get("description"),
         ", ".join(u.get("amenities") or []),
-        PHOTO_BASE + str(u.get("slug")) + "/",
+        GALLERY_BASE + str(u.get("wp")) + ".html",
         len(photos),
         rates.get("defaultRate"),
         rate_periods,
