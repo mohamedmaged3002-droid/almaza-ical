@@ -9,17 +9,27 @@ const stripHtml = (s) =>
     .replace(/\n{2,}/g, '\n')
     .trim();
 
+// JSON-LD `image` may be a single string, an array of strings, or an array of
+// { url } objects. Normalize all three shapes to a plain string[] and drop
+// anything empty.
+function normalizeImages(image) {
+  if (!image) return [];
+  const arr = Array.isArray(image) ? image : [image];
+  return arr.map((x) => (typeof x === 'string' ? x : x && x.url)).filter(Boolean);
+}
+
 // JSON-LD "VacationRental" -> our unit record.
-function parseJsonLd(ld) {
-  const cp = ld.containsPlace || {};
+function parseJsonLd(ld = {}) {
+  const cp = (ld && ld.containsPlace) || {};
   return {
     propertyId: ld.identifier,
     title: ld.name,
     sourceUrl: ld.url,
     description: stripHtml(ld.description),
-    lat: ld.geo ? Number(ld.geo.latitude) : null,
-    lng: ld.geo ? Number(ld.geo.longitude) : null,
-    photos: Array.isArray(ld.image) ? ld.image.slice() : [],
+    // Coerce non-finite coords to null so a record never carries NaN downstream.
+    lat: ld.geo && Number.isFinite(Number(ld.geo.latitude)) ? Number(ld.geo.latitude) : null,
+    lng: ld.geo && Number.isFinite(Number(ld.geo.longitude)) ? Number(ld.geo.longitude) : null,
+    photos: normalizeImages(ld.image),
     // The REAL amenity list. Ground the copy model in this — do NOT let it invent
     // amenities (project_birdnest_resort_copy_hallucination).
     amenities: (ld.amenityFeature || []).map((a) => a.name),
@@ -36,8 +46,8 @@ function parseJsonLd(ld) {
 // v3 rates payload -> { roomId, currency, defaultRate, periods[] }.
 // NOTE: rates come from the API ONLY. The rendered page is CDN-cached and has
 // been observed serving a stale July price (20,000 vs the live 15,000).
-function parseRates(json) {
-  const roomTypes = json.roomTypes || {};
+function parseRates(json = {}) {
+  const roomTypes = (json && json.roomTypes) || {};
   const key = Object.keys(roomTypes)[0];
   if (!key) return { roomId: null, currency: null, defaultRate: null, periods: [] };
   const rt = roomTypes[key];
@@ -79,8 +89,8 @@ function ratePeriodsToDaily({ periods }) {
 }
 
 // checkout/calendar payload -> blocked dates + min-stay + coverage counts.
-function parseCalendar(json) {
-  const days = json.calendar || [];
+function parseCalendar(json = {}) {
+  const days = (json && json.calendar) || [];
   const blocked = [];
   let available = 0;
   let minStay = null;
@@ -92,4 +102,4 @@ function parseCalendar(json) {
   return { blocked, available, minStay, covered: days.length };
 }
 
-module.exports = { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily, stripHtml };
+module.exports = { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily, stripHtml, normalizeImages };

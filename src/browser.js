@@ -1,8 +1,11 @@
 // src/browser.js
 // All Lodgify endpoints sit behind Cloudflare, which challenges non-browser
 // clients (plain curl gets "Just a moment..."). We therefore drive a REAL
-// Chromium with an HONEST user-agent and fetch from inside the page context,
-// so the CF clearance cookie applies.
+// Chromium with an HONEST user-agent and issue the fetch from INSIDE a real,
+// Cloudflare-cleared browser page context. It passes because the request comes
+// from a genuine browser (honest TLS/JS fingerprint), NOT because a CF clearance
+// cookie is forwarded — the fetch uses `credentials: 'omit'` and the spike
+// proved it works with no cookie at all.
 //
 // D-003: do NOT add stealth/anti-detection plugins. Almaza has not authorised
 // this scrape. If honest access stops working, STOP and escalate to Maged.
@@ -11,15 +14,23 @@ const cfg = require('./config');
 
 async function openBrowser() {
   const browser = await chromium.launch();
-  const ctx = await browser.newContext({ userAgent: cfg.USER_AGENT });
-  const page = await ctx.newPage();
-  // Land on the origin once so Cloudflare issues its clearance cookie for the
-  // whole session; every later in-page fetch then rides on it.
-  await page.goto(cfg.ORIGIN, { waitUntil: 'domcontentloaded' });
-  return { browser, page };
+  try {
+    const ctx = await browser.newContext({ userAgent: cfg.USER_AGENT });
+    const page = await ctx.newPage();
+    // Land on the origin once so the page is a real, Cloudflare-cleared browsing
+    // context on the target origin; every later in-page fetch then inherits that
+    // genuine-browser fingerprint (no cookie is relied upon — see header).
+    await page.goto(cfg.ORIGIN, { waitUntil: 'domcontentloaded' });
+    return { browser, page };
+  } catch (e) {
+    // Don't leak the Chromium process if the initial navigation fails.
+    await browser.close();
+    throw e;
+  }
 }
 
-// Fetch JSON from inside the page (rides the CF cookie). Throws on non-200.
+// Fetch JSON from inside the page (genuine-browser context; no cookie relied on).
+// Throws on non-200.
 async function fetchJsonInPage(page, url) {
   const out = await page.evaluate(async (u) => {
     const r = await fetch(u, { credentials: 'omit' });

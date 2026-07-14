@@ -13,8 +13,13 @@ function shouldWrite(prev, current, nights) {
   if (classified < nights * 0.95) return { write: false, reason: 'low-coverage' };
   if (errors > nights * 0.05) return { write: false, reason: 'too-many-errors' };
 
-  // A sudden mass-unblocking is far more likely to be a scrape bug than 150
-  // real cancellations. Refuse and keep the last-good feed.
+  // This fires when availability COLLAPSES vs the last good run (blocks spiked).
+  // That pattern is usually a scrape glitch marking everything blocked, so we
+  // keep the last-good feed rather than nuke the listing's availability.
+  // NOTE: the OPPOSITE direction — blocks vanishing / availability spiking UP —
+  // is the double-booking-dangerous one and is deliberately NOT guarded here;
+  // that tradeoff (a naive guard livelocks on real mass-cancellations) is an
+  // open operator decision (register item D7). Do not "fix" the direction here.
   if (prev && typeof prev.availableCount === 'number' && prev.availableCount > 0) {
     if (available < prev.availableCount * 0.5) {
       return { write: false, reason: 'availability-collapse' };

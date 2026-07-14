@@ -1,7 +1,7 @@
 // test/lodgify.test.js
 const { test } = require('node:test');
 const assert = require('node:assert');
-const { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily } = require('../src/lodgify');
+const { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily, normalizeImages } = require('../src/lodgify');
 
 const LD = {
   '@type': 'VacationRental',
@@ -90,4 +90,38 @@ test('parseCalendar returns blocked dates, min-stay and a coverage count', () =>
   assert.deepStrictEqual(c.blocked, ['2026-08-02', '2026-08-03']);
   assert.strictEqual(c.available, 1);
   assert.strictEqual(c.minStay, 4);
+});
+
+test('parsers do not throw on empty/undefined payloads and return sane empties', () => {
+  const u = parseJsonLd({});
+  assert.deepStrictEqual(u.photos, []);
+  assert.deepStrictEqual(u.amenities, []);
+  assert.strictEqual(u.lat, null);
+  assert.strictEqual(u.lng, null);
+  assert.strictEqual(u.bedrooms, null);
+
+  assert.deepStrictEqual(parseCalendar({}), { blocked: [], available: 0, minStay: null, covered: 0 });
+
+  assert.deepStrictEqual(parseRates({}), { roomId: null, currency: null, defaultRate: null, periods: [] });
+
+  // Also survives being called with no argument at all.
+  assert.doesNotThrow(() => parseJsonLd());
+  assert.doesNotThrow(() => parseCalendar());
+  assert.doesNotThrow(() => parseRates());
+});
+
+test('normalizeImages handles a bare string and an array of {url} objects', () => {
+  assert.deepStrictEqual(normalizeImages('https://l.icdbcdn.com/oh/aaa.jpg'), ['https://l.icdbcdn.com/oh/aaa.jpg']);
+  assert.deepStrictEqual(
+    normalizeImages([{ url: 'https://l.icdbcdn.com/oh/aaa.jpg' }, { url: 'https://l.icdbcdn.com/oh/bbb.jpg' }]),
+    ['https://l.icdbcdn.com/oh/aaa.jpg', 'https://l.icdbcdn.com/oh/bbb.jpg'],
+  );
+  assert.deepStrictEqual(normalizeImages(undefined), []);
+});
+
+test('a geo with a non-numeric latitude yields lat: null (never NaN)', () => {
+  const u = parseJsonLd({ geo: { latitude: 'not-a-number', longitude: 27.55 } });
+  assert.strictEqual(u.lat, null);
+  assert.strictEqual(Number.isNaN(u.lat), false);
+  assert.strictEqual(u.lng, 27.55);
 });

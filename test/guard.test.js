@@ -34,3 +34,9 @@ test('refuses when availability collapses vs the last good run', () => {
   assert.strictEqual(r.write, false);
   assert.strictEqual(r.reason, 'availability-collapse');
 });
+
+test('refuses when too many nights errored (errored nights publish as OPEN)', () => {
+  const r = shouldWrite(null, { ok: true, blocked: 90, available: 100, errors: 20 }, 200);
+  assert.strictEqual(r.write, false);
+  assert.strictEqual(r.reason, 'too-many-errors');
+});
