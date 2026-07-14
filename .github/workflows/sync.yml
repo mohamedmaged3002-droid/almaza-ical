@@ -1,0 +1,44 @@
+name: Sync Almaza availability
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # every 6h
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# One run at a time — never let two syncs race on the same docs/ commit.
+concurrency:
+  group: almaza-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90   # wide REQUEST_DELAY_MS + per-unit pagination make this a long, deliberately slow run
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'   # 22+ has native WebSocket (required by @supabase/supabase-js)
+          cache: 'npm'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: Scrape availability -> docs/*.ics
+        # Deliberately SLOW in CI: checkout.lodgify.com throttles under sustained
+        # load, and this hits it 152x. A wide inter-request delay keeps us polite
+        # (D-003) and under the throttle. The in-code backoff + circuit breaker
+        # handle whatever throttling still gets through.
+        env:
+          REQUEST_DELAY_MS: '4500'
+        run: node sync.js
+
+      - name: Commit refreshed feeds
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "chore: refresh Almaza iCal feeds"
+          git push

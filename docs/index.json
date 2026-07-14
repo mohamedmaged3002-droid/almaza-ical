@@ -1,0 +1,33 @@
+{
+  "updatedAt": "2026-07-14T20:56:09.904Z",
+  "skipped": [],
+  "properties": [
+    {
+      "wp": 91001,
+      "title": "72D Bay homes 1 Bedroom Chalet with Large Roof",
+      "slug": "72d-bay-homes-1-bedroom-chalet-with-large-roof",
+      "availableCount": 174,
+      "blockedCount": 39,
+      "minStay": 3,
+      "updatedAt": "2026-07-14T20:56:02.319Z"
+    },
+    {
+      "wp": 91002,
+      "title": "F01-S1 Residences 1 Bedroom Chalet",
+      "slug": "f01-s1-residences-1-bedroom-chalet",
+      "availableCount": 165,
+      "blockedCount": 48,
+      "minStay": 5,
+      "updatedAt": "2026-07-14T20:56:06.016Z"
+    },
+    {
+      "wp": 91003,
+      "title": "E06-F03 Beachtown 2 Bedrooms Apartment",
+      "slug": "e06-f03-beachtown-2-bedrooms-apartment",
+      "availableCount": 181,
+      "blockedCount": 32,
+      "minStay": 3,
+      "updatedAt": "2026-07-14T20:56:09.904Z"
+    }
+  ]
+}
