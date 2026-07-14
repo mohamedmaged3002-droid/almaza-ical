@@ -10,10 +10,13 @@ function operatorCode(title) {
   return m ? m[1].toUpperCase() : null;
 }
 
+// Discovered live across the 152-unit roster (2026-07-14). "Bayhomes" (one word)
+// and "Residence" (singular) both occur; "Selection" is the villa community.
 const SUB_COMMUNITIES = [
   [/\bbeach\s*town\b/i, 'Beachtown'],
   [/\bbay\s*homes\b/i, 'Bay Homes'],
-  [/\bresidences\b/i, 'Residences'],
+  [/\bresidences?\b/i, 'Residences'],   // matches "Residence" and "Residences"
+  [/\bselection\b/i, 'Selection'],      // villa community
 ];
 
 // Returns null for anything unrecognised — content.js FLAGS those rather than

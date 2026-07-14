@@ -26,6 +26,27 @@ async function readJsonLd(page, url) {
   });
 }
 
+// The rates host (websiteserver.lodgify.com) rate-limits under sustained load —
+// a cross-origin block surfaces as "Failed to fetch". D-003 handling: back off
+// POLITELY and retry (no evasion, no UA/IP tricks). Give the quota window time
+// to breathe rather than hammering.
+const RATE_BACKOFF_MS = [15000, 30000, 60000];
+async function fetchRatesPolitely(page, propId) {
+  let lastErr;
+  for (let attempt = 0; attempt <= RATE_BACKOFF_MS.length; attempt++) {
+    try {
+      return await fetchJsonInPage(page, cfg.RATES_URL(propId));
+    } catch (e) {
+      lastErr = e;
+      const wait = RATE_BACKOFF_MS[attempt];
+      if (wait == null) break; // out of retries
+      console.warn(`    rates ${propId} failed (${e.message}); backing off ${wait / 1000}s then retry`);
+      await sleep(wait);
+    }
+  }
+  throw lastErr;
+}
+
 async function main() {
   fs.mkdirSync(OUT, { recursive: true });
   const { browser, page } = await openBrowser();
@@ -36,6 +57,11 @@ async function main() {
 
   const problems = [];
   let n = 0;
+  let consecutiveFails = 0;
+  // Circuit breaker: if the rates host walls us off for this many units in a row
+  // even after backoff, the quota is spent — STOP rather than hammer an
+  // unauthorised operator's servers for 100 more units (D-003 politeness).
+  const MAX_CONSECUTIVE_FAILS = 6;
 
   for (const r of roster) {
     n += 1;
@@ -46,8 +72,20 @@ async function main() {
       if (!ld) throw new Error('no VacationRental JSON-LD on page');
 
       const u = parseJsonLd(ld);
-      const rates = await fetchJsonInPage(page, cfg.RATES_URL(u.propertyId));
+
+      // Resume support: if this unit was already scraped in a prior (aborted)
+      // run, skip WITHOUT re-hitting the throttled rates host. The unit page
+      // itself (same-origin) doesn't rate-limit, so reaching this check is cheap.
+      const outFile = path.join(OUT, `${u.propertyId}.json`);
+      if (fs.existsSync(outFile)) {
+        console.log(`[${n}/${roster.length}] ${wp} ${u.title} — already scraped, skip`);
+        consecutiveFails = 0;
+        continue;
+      }
+
+      const rates = await fetchRatesPolitely(page, u.propertyId);
       const parsedRates = parseRates(rates);
+      consecutiveFails = 0;
 
       // Geo: pin ONLY genuine coords. Out-of-bbox pins are NULLed, never guessed
       // into a centroid (project_geocoding_quality).
@@ -84,12 +122,20 @@ async function main() {
     } catch (e) {
       console.error(`[${n}/${roster.length}] FAILED ${url}: ${e.message}`);
       problems.push({ wp, url, issue: `scrape-failed: ${e.message}` });
+      consecutiveFails += 1;
+      if (consecutiveFails >= MAX_CONSECUTIVE_FAILS) {
+        console.error(`\nABORTING: ${consecutiveFails} consecutive failures — the rates host is walling us off. ` +
+          `Stopping at unit ${n}/${roster.length} to stay polite. Re-run later (quota resets fast) to resume the rest.`);
+        problems.push({ issue: 'aborted-circuit-breaker', atUnit: n, of: roster.length });
+        break;
+      }
     }
     await sleep(cfg.REQUEST_DELAY_MS);
   }
 
+  const done = fs.readdirSync(OUT).length;
   fs.writeFileSync(path.join(__dirname, 'output', 'problems.json'), JSON.stringify(problems, null, 2));
-  console.log(`\nDone. ${problems.length} problems -> output/problems.json`);
+  console.log(`\nDone. ${done}/${roster.length} units scraped, ${problems.length} problems -> output/problems.json`);
   await browser.close();
 }
 

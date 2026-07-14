@@ -13,10 +13,13 @@ test('operatorCode returns null when the title has no leading code', () => {
   assert.strictEqual(operatorCode('Beautiful Chalet by the Sea'), null);
 });
 
-test('subCommunity recognises the three known sub-communities, case-insensitively', () => {
+test('subCommunity recognises all sub-communities, case- and spelling-tolerant', () => {
   assert.strictEqual(subCommunity('D08-G03 Beachtown 2 Bedroom Apartment'), 'Beachtown');
   assert.strictEqual(subCommunity('72D Bay homes 1 Bedroom Chalet'), 'Bay Homes');
+  assert.strictEqual(subCommunity('67A Bayhomes 3 Bedroom Quad chalet'), 'Bay Homes'); // one word
   assert.strictEqual(subCommunity('F01-S1 Residences 1 Bedroom Chalet'), 'Residences');
+  assert.strictEqual(subCommunity('E09-F Residence 3 bedroom chalet'), 'Residences'); // singular
+  assert.strictEqual(subCommunity('G30 Selection 6 Bedroom Standalone Villa'), 'Selection'); // villa community
 });
 
 test('subCommunity returns null for an unknown sub-community (so the run can flag it)', () => {
