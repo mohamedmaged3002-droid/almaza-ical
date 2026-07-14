@@ -1,16 +1,16 @@
 {
   "name": "almaza-ical",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Scrapes almazabay.lodgify.com availability and publishes per-unit iCal feeds for BlueKeys calendar sync",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "content": "node content.js",
+    "sync": "node sync.js",
+    "wire": "node wire.js",
+    "test": "node --test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "playwright": "^1.61.1"
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5",
+    "playwright": "^1.48.0"
   }
 }
