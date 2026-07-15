@@ -14,6 +14,7 @@ OTA team converts at listing time. NO network, NO DB.
 """
 import json
 import os
+import re
 from datetime import date, timedelta
 
 from openpyxl import Workbook
@@ -35,6 +36,41 @@ MONTHS = [("06", "Jun '26"), ("07", "Jul '26"), ("08", "Aug '26"),
 
 HDR_FILL = PatternFill("solid", fgColor="1F4E79")
 HDR_FONT = Font(bold=True, color="FFFFFF")
+BLOCKED_FILL = PatternFill("solid", fgColor="D9D9D9")   # grey = unavailable
+DOCS_DIR = os.path.join(HERE, "docs")
+
+SEASON_START = date(2026, 6, 1)
+SEASON_END = date(2026, 10, 31)
+
+
+def season_dates():
+    out, d = [], SEASON_START
+    while d <= SEASON_END:
+        out.append(d.isoformat())
+        d += timedelta(days=1)
+    return out
+
+
+def load_blocked(wp):
+    """Set of ISO dates this unit is BLOCKED, parsed from its docs/{wp}.ics feed
+    (DTSTART inclusive .. DTEND exclusive). Point-in-time snapshot of the feed."""
+    p = os.path.join(DOCS_DIR, f"{wp}.ics")
+    blocked = set()
+    if not os.path.exists(p):
+        return blocked
+    with open(p, encoding="utf-8") as f:
+        txt = f.read()
+    for ev in txt.split("BEGIN:VEVENT")[1:]:
+        ds = re.search(r"DTSTART;VALUE=DATE:(\d{4})(\d{2})(\d{2})", ev)
+        de = re.search(r"DTEND;VALUE=DATE:(\d{4})(\d{2})(\d{2})", ev)
+        if not ds or not de:
+            continue
+        d = date(*map(int, ds.groups()))
+        end = date(*map(int, de.groups()))          # exclusive
+        while d < end:
+            blocked.add(d.isoformat())
+            d += timedelta(days=1)
+    return blocked
 
 
 # ----- data loading ----------------------------------------------------------
@@ -185,11 +221,20 @@ def build_monthly(ws, units, daily):
     r = 5
     for u in units:
         rows = daily_of(daily, u)
-        cells, reps = [], []
+        blocked = load_blocked(u.get("wp"))
+        cells, reps, blkd_flags = [], [], []
         for mm, _ in MONTHS:
-            txt, rep = month_cell(rows, mm)
-            cells.append(txt)
-            reps.append(rep)
+            mdates = [x["date"] for x in rows if x["date"][5:7] == mm]
+            fully_blocked = bool(mdates) and all(d in blocked for d in mdates)
+            if fully_blocked:
+                cells.append("blkd")
+                reps.append(None)
+                blkd_flags.append(True)
+            else:
+                txt, rep = month_cell(rows, mm)
+                cells.append(txt)
+                reps.append(rep)
+                blkd_flags.append(False)
         ws.append([u.get("wp"), u.get("slug"), u.get("title"),
                    u.get("subCommunity") or "", u.get("bedrooms")] + cells)
         valid = [x for x in reps if x is not None]
@@ -198,6 +243,9 @@ def build_monthly(ws, units, daily):
         for j, rep in enumerate(reps):
             cell = ws.cell(r, 6 + j)
             cell.alignment = Alignment(wrap_text=True, vertical="center", horizontal="center")
+            if blkd_flags[j]:
+                cell.fill = BLOCKED_FILL
+                continue
             if rep is None:
                 continue
             t = (rep - lo) / (hi - lo) if hi > lo else 0.0
@@ -211,26 +259,57 @@ def build_monthly(ws, units, daily):
     ws.freeze_panes = "F5"
 
 
+def merged_segments(daily_rows, blocked):
+    """Chronological segments over the season: each is either a flat-price run
+    ('egp') or a Blocked run (unavailable per the iCal feed). Blocked wins over
+    price on a date. [{start, end, nights, egp|None, blocked}]."""
+    price_by = {r["date"]: r["price"] for r in daily_rows}
+    segs = []
+    for iso in season_dates():
+        if iso in blocked:
+            key = ("BLK", None)
+        elif iso in price_by:
+            key = ("EGP", price_by[iso])
+        else:
+            continue
+        if segs and segs[-1]["key"] == key and next_day(segs[-1]["end"]) == iso:
+            segs[-1]["end"] = iso
+            segs[-1]["nights"] += 1
+        else:
+            segs.append({"start": iso, "end": iso, "nights": 1, "key": key})
+    return segs
+
+
 def build_ranges(ws, units, daily):
     ws.append(["Nightly price by date range — EGP (exact, no estimation)"])
     ws.append(["Each row = a continuous date range at one flat nightly rate, from Almaza's Lodgify rates "
-               "(named period price, else the operator's Default Rate; no averaging). "
-               "Prices in EGP — exactly as shown on almazabay.lodgify.com."])
+               "(named period price, else the operator's Default Rate; no averaging). Prices in EGP — "
+               "exactly as on almazabay.lodgify.com. Grey 'Blocked' rows = nights the calendar shows "
+               "unavailable (snapshot of the live iCal feed — re-check the feed before booking)."])
     ws.append([])
     cols = ["wp", "Code/Slug", "Title", "Area", "Beds", "From", "To", "Nights", "Nightly EGP"]
     ws.append(cols)
     style_headers(ws, 4)
-    n = 0
+    n = n_blk = 0
+    r = 5
     for u in units:
-        for s in segments_for(daily_of(daily, u)):
+        blocked = load_blocked(u.get("wp"))
+        for s in merged_segments(daily_of(daily, u), blocked):
+            is_blk = s["key"][0] == "BLK"
             ws.append([u.get("wp"), u.get("slug"), u.get("title"), u.get("subCommunity") or "",
-                       u.get("bedrooms"), s["start"], s["end"], s["nights"], s["egp"]])
+                       u.get("bedrooms"), s["start"], s["end"], s["nights"],
+                       "Blocked" if is_blk else s["key"][1]])
+            if is_blk:
+                for c in ws[r]:
+                    c.fill = BLOCKED_FILL
+                n_blk += 1
             n += 1
+            r += 1
     for i, w in enumerate([8, 26, 34, 18, 6, 13, 13, 8, 13], 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = w
     ws.freeze_panes = "A5"
     ws.auto_filter.ref = f"A4:I{ws.max_row}"
-    return n
+    return n, n_blk
 
 
 def main():
@@ -242,12 +321,12 @@ def main():
     build_master(wb.active, units, min_stays)
     wb.active.title = "Almaza Master"
     build_monthly(wb.create_sheet("Monthly Prices"), units, daily)
-    n_seg = build_ranges(wb.create_sheet("Price Ranges"), units, daily)
+    n_seg, n_blk = build_ranges(wb.create_sheet("Price Ranges"), units, daily)
 
     wb.save(OUT)
     print(f"Wrote {OUT}")
     print(f"Tabs: {wb.sheetnames}")
-    print(f"Units: {len(units)}  |  Price-range rows: {n_seg}  |  Currency: {CUR} (no conversion)")
+    print(f"Units: {len(units)}  |  Price-range rows: {n_seg} ({n_blk} Blocked)  |  Currency: {CUR}")
 
 
 if __name__ == "__main__":
