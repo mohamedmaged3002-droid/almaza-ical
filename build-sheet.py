@@ -185,20 +185,30 @@ def style_headers(ws, row):
 
 
 def build_master(ws, units, min_stays):
+    window = eligibility_window()
     ws.append(["Almaza Bay — OTA listing pack"])
-    ws.append(["One row per unit. Prices (EGP) are in the Monthly Prices / Price Ranges tabs — "
-               "matches almazabay.lodgify.com 1:1. The OTA team converts currency at listing time."])
+    ws.append([f"One row per unit. Prices (EGP) in the Monthly Prices / Price Ranges tabs — matches "
+               f"almazabay.lodgify.com 1:1. 'ota_eligible' = YES when the unit has >= {ELIG_MIN} available "
+               f"nights (not blocked) between today and 1 Oct 2026; refreshes daily with the feeds."])
     ws.append([])
     cols = ["wp_post_id", "source_code", "operator_unit_code", "sub_community", "title",
             "property_type", "guests_bluekeys", "guests_operator", "bedrooms", "bathrooms",
             "default_rate_egp", "min_stay", "checkin_time", "checkout_time",
             "amenities", "photo_gallery", "photo_count", "ical_url",
-            "lat", "lng", "source_url", "status"]
+            "lat", "lng", "source_url", "avail_nights_to_1oct", "ota_eligible"]
     ws.append(cols)
     style_headers(ws, 4)
+    elig_col = len(cols)                 # last column = ota_eligible
+    green = PatternFill("solid", fgColor="C6EFCE")
+    red = PatternFill("solid", fgColor="FFC7CE")
+    r, n_elig = 5, 0
     for u in units:
         rates = u.get("rates") or {}
         lat, lng = u.get("lat"), u.get("lng")
+        avail = available_nights(u.get("wp"), window)
+        elig = avail >= ELIG_MIN
+        if elig:
+            n_elig += 1
         ws.append([
             u.get("wp"), u.get("sourceCode"), u.get("operatorCode"),
             u.get("subCommunity") or "UNKNOWN — needs review", u.get("title"),
@@ -210,14 +220,17 @@ def build_master(ws, units, min_stays):
             GALLERY_BASE + str(u.get("wp")) + ".html", photo_count(u),
             ICAL_BASE + str(u.get("wp")) + ".ics",
             "NEEDS PIN" if lat is None else lat, "NEEDS PIN" if lng is None else lng,
-            u.get("sourceUrl"), "draft",
+            u.get("sourceUrl"), avail, "YES" if elig else "NO",
         ])
+        ws.cell(r, elig_col).fill = green if elig else red
+        r += 1
     widths = {"title": 42, "sub_community": 20, "amenities": 50, "photo_gallery": 56,
               "ical_url": 56, "source_url": 56, "checkin_time": 12, "checkout_time": 16,
-              "default_rate_egp": 15}
+              "default_rate_egp": 15, "avail_nights_to_1oct": 20, "ota_eligible": 13}
     for i, c in enumerate(cols, 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = widths.get(c, 13)
     ws.freeze_panes = "A5"
+    return n_elig
 
 
 def build_monthly(ws, units, daily):
@@ -325,50 +338,23 @@ def build_ranges(ws, units, daily):
     return n, n_blk
 
 
-ELIG_END = date(2026, 10, 1)   # eligibility window end (1 Oct)
+ELIG_END = date(2026, 10, 1)   # OTA-eligibility window end (1 Oct)
 ELIG_MIN = 30                  # need >= 30 available nights in the window
 
 
-def build_eligibility(ws, units):
-    """Flag each unit OTA-eligible if it has >= ELIG_MIN nights AVAILABLE (not
-    blocked per the live iCal feed) in [today .. 1 Oct 2026]. Refreshes daily."""
-    today = date.today()
-    window = []
-    d = today
+def eligibility_window():
+    """[today .. 1 Oct 2026] as ISO strings. Recomputed each build (moves daily)."""
+    window, d = [], date.today()
     while d <= ELIG_END:
         window.append(d.isoformat())
         d += timedelta(days=1)
-    n_window = len(window)
+    return window
 
-    ws.append([f"OTA eligibility — at least {ELIG_MIN} available nights from today to 1 Oct 2026"])
-    ws.append([f"'Available' = a night NOT blocked in the live iCal feed. Window: {today.isoformat()} → "
-               f"2026-10-01 ({n_window} nights). Eligible = >= {ELIG_MIN} available nights. "
-               f"Snapshot as of {today.isoformat()} — refreshes daily with the feeds."])
-    ws.append([])
-    cols = ["wp", "Code/Slug", "Title", "Area", "Beds",
-            "Available nights (→ 1 Oct)", "Window nights", "Eligible?"]
-    ws.append(cols)
-    style_headers(ws, 4)
 
-    green = PatternFill("solid", fgColor="C6EFCE")
-    red = PatternFill("solid", fgColor="FFC7CE")
-    r, n_elig = 5, 0
-    for u in units:
-        blocked = load_blocked(u.get("wp"))
-        avail = sum(1 for iso in window if iso not in blocked)
-        elig = avail >= ELIG_MIN
-        if elig:
-            n_elig += 1
-        ws.append([u.get("wp"), u.get("slug"), u.get("title"), u.get("subCommunity") or "",
-                   u.get("bedrooms"), avail, n_window, "YES" if elig else "NO"])
-        ws.cell(r, 8).fill = green if elig else red
-        r += 1
-
-    for i, w in enumerate([8, 26, 34, 18, 6, 24, 14, 11], 1):
-        ws.column_dimensions[ws.cell(4, i).column_letter].width = w
-    ws.freeze_panes = "A5"
-    ws.auto_filter.ref = f"A4:H{ws.max_row}"
-    return n_elig, n_window
+def available_nights(wp, window):
+    """Nights in the window NOT blocked per the unit's live iCal feed."""
+    blocked = load_blocked(wp)
+    return sum(1 for iso in window if iso not in blocked)
 
 
 def main():
@@ -377,9 +363,8 @@ def main():
     daily = load_daily()
 
     wb = Workbook()
-    build_master(wb.active, units, min_stays)
+    n_elig = build_master(wb.active, units, min_stays)
     wb.active.title = "Almaza Master"
-    n_elig, n_window = build_eligibility(wb.create_sheet("OTA Eligibility", 1), units)
     build_monthly(wb.create_sheet("Monthly Prices"), units, daily)
     n_seg, n_blk = build_ranges(wb.create_sheet("Price Ranges"), units, daily)
 
@@ -387,7 +372,7 @@ def main():
     print(f"Wrote {OUT}")
     print(f"Tabs: {wb.sheetnames}")
     print(f"Units: {len(units)}  |  Price-range rows: {n_seg} ({n_blk} Blocked)  |  Currency: {CUR}")
-    print(f"OTA-eligible (>= {ELIG_MIN} avail nights in {n_window}-night window): {n_elig}/{len(units)}")
+    print(f"OTA-eligible (>= {ELIG_MIN} avail nights, today->1 Oct): {n_elig}/{len(units)}")
 
 
 if __name__ == "__main__":
