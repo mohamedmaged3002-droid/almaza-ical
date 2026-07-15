@@ -18,7 +18,11 @@ from openpyxl.utils import get_column_letter
 HERE = os.path.dirname(os.path.abspath(__file__))
 UNITS_DIR = os.path.join(HERE, "output", "units")
 INDEX_JSON = os.path.join(HERE, "docs", "index.json")
+DAILY_JSON = os.path.join(HERE, "output", "daily-prices.json")
 OUT = os.path.join(HERE, "Almaza Master.xlsx")
+
+MONTHS = [("06", "price_june"), ("07", "price_july"), ("08", "price_august"),
+          ("09", "price_september"), ("10", "price_october")]
 
 ICAL_BASE = "https://mohamedmaged3002-droid.github.io/almaza-ical/"
 # Browsable per-unit photo gallery on Pages (R2 has no folder listing). The
@@ -30,17 +34,42 @@ COLUMNS = [
     "lodgify_property_id", "lodgify_room_id", "title", "sub_community",
     "property_type", "guests_bluekeys", "guests_operator", "bedrooms", "beds",
     "bathrooms", "description", "amenities", "photo_gallery", "photo_count",
-    "rate_default", "rate_periods", "currency", "min_stay", "checkin_time",
+    "currency", "default_rate",
+    "price_june", "price_july", "price_august", "price_september", "price_october",
+    "pricing_note", "min_stay", "checkin_time",
     "checkout_time", "ical_url", "lat", "lng", "source_url", "status",
 ]
 
 # Wider columns for free-text / URL fields; everything else gets a sane default.
 COL_WIDTHS = {
     "title": 44, "sub_community": 22, "property_type": 16, "description": 60,
-    "amenities": 50, "photo_folder": 50, "rate_periods": 34, "ical_url": 58,
+    "amenities": 50, "photo_gallery": 58, "pricing_note": 40, "ical_url": 58,
     "source_url": 58, "checkin_time": 14, "checkout_time": 18,
+    "price_june": 13, "price_july": 13, "price_august": 13,
+    "price_september": 14, "price_october": 13, "default_rate": 12,
 }
 DEFAULT_WIDTH = 14
+
+
+def load_daily():
+    """wp(str) -> [{date, price}] for the season, or {} if not generated yet."""
+    if not os.path.exists(DAILY_JSON):
+        return {}
+    with open(DAILY_JSON, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def month_price(daily_rows, mm):
+    """Accurate price for calendar month `mm` from the per-date rows.
+    Returns a single int if every night in the month shares one price, else the
+    string 'MIN–MAX ⚠' to signal the OTA team must set NIGHTLY (date-specific)
+    rates for that month. Blank if the month has no priced nights."""
+    prices = sorted({r["price"] for r in daily_rows if r["date"][5:7] == mm})
+    if not prices:
+        return ""
+    if len(prices) == 1:
+        return prices[0]
+    return f"{prices[0]:,}–{prices[-1]:,} ⚠"
 
 
 def load_units():
@@ -72,13 +101,16 @@ def load_min_stays():
     return out
 
 
-def row_for(u, min_stays):
+def row_for(u, min_stays, daily):
     rates = u.get("rates") or {}
-    periods = rates.get("periods") or []
-    rate_periods = "; ".join(f"{p.get('name')}: {p.get('price')}" for p in periods)
     photos = u.get("photos") or []
     lat = u.get("lat")
     lng = u.get("lng")
+    daily_rows = daily.get(str(u.get("wp"))) or daily.get(u.get("wp")) or []
+    month_vals = [month_price(daily_rows, mm) for mm, _ in MONTHS]
+    varies = [name.split("_")[1] for (mm, name), v in zip(MONTHS, month_vals)
+              if isinstance(v, str) and v]
+    note = ("nightly rates vary in: " + ", ".join(varies)) if varies else "flat monthly rates"
     return [
         u.get("sourceCode"),
         u.get("operatorCode"),
@@ -97,9 +129,10 @@ def row_for(u, min_stays):
         ", ".join(u.get("amenities") or []),
         GALLERY_BASE + str(u.get("wp")) + ".html",
         len(photos),
-        rates.get("defaultRate"),
-        rate_periods,
         rates.get("currency"),
+        rates.get("defaultRate"),
+        *month_vals,                    # price_june .. price_october
+        note,
         min_stays.get(u.get("wp"), ""),
         u.get("checkinTime"),
         u.get("checkoutTime"),
@@ -114,6 +147,7 @@ def row_for(u, min_stays):
 def main():
     units = load_units()
     min_stays = load_min_stays()
+    daily = load_daily()
 
     wb = Workbook()
     ws = wb.active
@@ -126,7 +160,7 @@ def main():
     n_min_stay = 0
     n_needs_pin = 0
     for u in units:
-        row = row_for(u, min_stays)
+        row = row_for(u, min_stays, daily)
         ws.append(row)
         if row[COLUMNS.index("min_stay")] != "":
             n_min_stay += 1

@@ -125,3 +125,34 @@ test('a geo with a non-numeric latitude yields lat: null (never NaN)', () => {
   assert.strictEqual(Number.isNaN(u.lat), false);
   assert.strictEqual(u.lng, 27.55);
 });
+
+test('dailyPricesForSeason fills the whole season: period price inside, Default Rate outside', () => {
+  const { dailyPricesForSeason } = require('../src/lodgify');
+  // 91001-style: default 12000, High Season Jul1-Aug31 @16000
+  const rates = { defaultRate: 12000, periods: [{ name: 'High Season', price: 16000, start: '2026-07-01', end: '2026-08-31' }] };
+  const rows = dailyPricesForSeason(rates, '2026-06-01', '2026-10-31');
+  const at = (d) => rows.find((r) => r.date === d).price;
+  assert.strictEqual(rows.length, 153);                 // Jun1..Oct31 inclusive
+  assert.strictEqual(at('2026-06-15'), 12000);          // June -> Default Rate
+  assert.strictEqual(at('2026-07-01'), 16000);          // High Season boundary
+  assert.strictEqual(at('2026-08-31'), 16000);          // High Season end
+  assert.strictEqual(at('2026-09-10'), 12000);          // Sept -> Default Rate
+  assert.strictEqual(at('2026-10-31'), 12000);          // Oct -> Default Rate
+});
+
+test('dailyPricesForSeason honours intra-month splits (July A/B) per date', () => {
+  const { dailyPricesForSeason } = require('../src/lodgify');
+  const rates = { defaultRate: 10000, periods: [
+    { name: 'July A', price: 33000, start: '2026-07-01', end: '2026-07-15' },
+    { name: 'July B', price: 36000, start: '2026-07-16', end: '2026-07-31' },
+  ] };
+  const rows = dailyPricesForSeason(rates, '2026-07-01', '2026-07-31');
+  const at = (d) => rows.find((r) => r.date === d).price;
+  assert.strictEqual(at('2026-07-10'), 33000);
+  assert.strictEqual(at('2026-07-16'), 36000);
+});
+
+test('dailyPricesForSeason returns [] when there is no default rate', () => {
+  const { dailyPricesForSeason } = require('../src/lodgify');
+  assert.deepStrictEqual(dailyPricesForSeason({ defaultRate: null, periods: [] }, '2026-06-01', '2026-10-31'), []);
+});

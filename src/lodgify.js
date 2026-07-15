@@ -88,6 +88,34 @@ function ratePeriodsToDaily({ periods }) {
   return [...byDate.entries()].sort().map(([date, price]) => ({ date, price }));
 }
 
+// Price EVERY date in [seasonStart, seasonEnd] using the operator's real rules:
+// the named period covering the date (later periods win on overlap), else the
+// operator's explicit "Default Rate". Lodgify reports useSmartPricing:false for
+// this site, so this IS the exact per-night price — there is no finer engine.
+//
+// Unlike ratePeriodsToDaily (periods only), this fills gaps with the Default
+// Rate — necessary because June/Sep/Oct are default-priced for ~all units, so
+// periods-only left those months unpriced (=> wrongly BLOCKED). The fill is
+// bounded to the operator's active season [seasonStart, seasonEnd]; dates
+// outside it get no row (still BLOCKED — we don't invent off-season prices).
+function dailyPricesForSeason(rates, seasonStart, seasonEnd) {
+  const { defaultRate, periods } = rates || {};
+  if (defaultRate == null) return [];        // no operator price at all -> no rows
+  const out = [];
+  let d = parseIso(seasonStart);
+  const end = parseIso(seasonEnd);
+  while (d <= end) {
+    const day = iso(d);
+    let price = defaultRate;
+    for (const p of periods || []) {
+      if (day >= p.start && day <= p.end) price = p.price; // later match wins
+    }
+    out.push({ date: day, price });
+    d = addDays(d, 1);
+  }
+  return out;
+}
+
 // checkout/calendar payload -> blocked dates + min-stay + coverage counts.
 function parseCalendar(json = {}) {
   const days = (json && json.calendar) || [];
@@ -102,4 +130,4 @@ function parseCalendar(json = {}) {
   return { blocked, available, minStay, covered: days.length };
 }
 
-module.exports = { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily, stripHtml, normalizeImages };
+module.exports = { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily, dailyPricesForSeason, stripHtml, normalizeImages };
