@@ -33,6 +33,7 @@ const SEASON_END = '2026-10-31';
 const UNITS_PATH = path.join(__dirname, 'data', 'units.json');
 const STATE_PATH = path.join(__dirname, 'state', 'prices.json');
 const ROSTER_PATH = path.join(__dirname, 'data', 'roster.json');
+const DAILY_PATH = path.join(__dirname, 'output', 'daily-prices.json'); // for build-sheet.py
 
 const DRY = process.argv.includes('--dry-run');
 const SEED = process.argv.includes('--seed');
@@ -52,6 +53,17 @@ function loadJson(p, fallback) {
 function serializePriceMap(map) {
   const wps = Object.keys(map).sort((a, b) => Number(a) - Number(b));
   return '{\n' + wps.map((wp) => `${JSON.stringify(String(wp))}:${JSON.stringify(map[wp])}`).join(',\n') + '\n}\n';
+}
+
+// Write the current price map in build-sheet.py's format ({wp:[{date,price}]}) so
+// the workflow can rebuild + re-upload the OTA sheet with today's prices.
+function writeDailyForSheet(priceMap) {
+  fs.mkdirSync(path.dirname(DAILY_PATH), { recursive: true });
+  const out = {};
+  for (const wp of Object.keys(priceMap)) {
+    out[wp] = Object.entries(priceMap[wp]).sort().map(([date, price]) => ({ date, price }));
+  }
+  fs.writeFileSync(DAILY_PATH, JSON.stringify(out));
 }
 
 function writeBaseline(priceMap, roster) {
@@ -170,6 +182,10 @@ async function main() {
   // Merge so a unit that transiently failed to fetch keeps its last-known baseline
   // (an absent unit produced no false price change above, and won't lose history).
   const nextBaseline = { ...baseline, ...newPrices };
+
+  // Emit today's prices for the sheet rebuild (every run, incl. no-change/seed) so
+  // the Drive-hosted OTA sheet always reflects current prices. Skipped on dry-run.
+  if (!DRY) writeDailyForSheet(nextBaseline);
 
   // ---- first run: establish the baseline SILENTLY (no email) ----
   if (firstRun) {

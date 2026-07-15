@@ -74,14 +74,27 @@ def load_blocked(wp):
 
 
 # ----- data loading ----------------------------------------------------------
+CONTENT_BUNDLE = os.path.join(HERE, "data", "sheet-content.json")
+
+
 def load_units():
-    units = []
-    for name in os.listdir(UNITS_DIR):
-        if name.endswith(".json"):
-            with open(os.path.join(UNITS_DIR, name), encoding="utf-8") as f:
-                units.append(json.load(f))
+    # Prefer the committed static bundle (so CI can build without output/units/*),
+    # fall back to the local scrape output.
+    if os.path.exists(CONTENT_BUNDLE):
+        with open(CONTENT_BUNDLE, encoding="utf-8") as f:
+            units = json.load(f)
+    else:
+        units = []
+        for name in os.listdir(UNITS_DIR):
+            if name.endswith(".json"):
+                with open(os.path.join(UNITS_DIR, name), encoding="utf-8") as f:
+                    units.append(json.load(f))
     units.sort(key=lambda u: u.get("wp", 0))
     return units
+
+
+def photo_count(u):
+    return u["photoCount"] if "photoCount" in u else len(u.get("photos") or [])
 
 
 def load_min_stays():
@@ -194,7 +207,7 @@ def build_master(ws, units, min_stays):
             rates.get("defaultRate") if rates.get("defaultRate") is not None else "",
             min_stays.get(u.get("wp"), ""), u.get("checkinTime"), u.get("checkoutTime"),
             ", ".join(u.get("amenities") or []),
-            GALLERY_BASE + str(u.get("wp")) + ".html", len(u.get("photos") or []),
+            GALLERY_BASE + str(u.get("wp")) + ".html", photo_count(u),
             ICAL_BASE + str(u.get("wp")) + ".ics",
             "NEEDS PIN" if lat is None else lat, "NEEDS PIN" if lng is None else lng,
             u.get("sourceUrl"), "draft",

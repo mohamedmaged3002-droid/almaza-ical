@@ -24,6 +24,27 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           NOTIFY_EMAIL: 'samanoudi@bluekeys.co, maged@bluekeys.co, reservations@bluekeys.co, mfikry772007@gmail.com'
         run: ${{ inputs.dry_run && 'node pricewatch.js --dry-run' || 'node pricewatch.js' }}
+
+      # Rebuild the OTA sheet with today's prices (build-sheet.py reads the committed
+      # static bundle data/sheet-content.json + the fresh output/daily-prices.json the
+      # watch just wrote + the committed docs/*.ics availability) and re-upload it to
+      # the SAME Drive path, so the shared link stays current. Skipped on dry-run and
+      # skipped silently if RCLONE_GDRIVE_TOKEN isn't set yet.
+      - name: Rebuild + upload OTA sheet to Drive
+        if: ${{ inputs.dry_run != true }}
+        env:
+          RCLONE_CONFIG_GDRIVE_TYPE: drive
+          RCLONE_CONFIG_GDRIVE_SCOPE: drive
+          RCLONE_CONFIG_GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
+        run: |
+          if [ -z "$RCLONE_CONFIG_GDRIVE_TOKEN" ]; then
+            echo "RCLONE_GDRIVE_TOKEN not set — skipping Drive upload."; exit 0
+          fi
+          pip install --quiet openpyxl
+          python build-sheet.py
+          sudo apt-get update -qq && sudo apt-get install -y -qq rclone
+          rclone copyto "Almaza Master.xlsx" "gdrive:BlueKeys Photos/Almaza Master.xlsx" -v
+
       - name: Commit updated baseline
         if: ${{ inputs.dry_run != true }}
         run: |
