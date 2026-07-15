@@ -1,0 +1,22 @@
+name: Almaza email test
+on:
+  workflow_dispatch:
+    inputs:
+      to:
+        description: 'Recipient (comma-separated). Defaults to Maged only.'
+        default: 'maged@bluekeys.co'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: 'npm' }
+      - run: npm ci
+      - name: Send test email
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          NOTIFY_EMAIL: ${{ inputs.to }}
+        run: node scripts/send-demo-email.js
