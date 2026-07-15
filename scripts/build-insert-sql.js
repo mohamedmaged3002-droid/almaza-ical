@@ -5,14 +5,18 @@
 //
 // Builds to the VERIFIED live schema: provides every NOT-NULL-without-default
 // column (slug, title, compound, beds, baths, guests) and overrides the
-// defaulted source/area/status. Leaves photo_urls at its '{}' default (photos
-// land later via R2).
+// defaulted source/area/status. photo_urls comes from output/r2-photos.json
+// (the R2 upload map) when present; otherwise falls back to the '{}' default.
 const fs = require('fs');
 const path = require('path');
 
 const UNITS_DIR = path.join(__dirname, '..', 'output', 'units');
+const R2MAP = path.join(__dirname, '..', 'output', 'r2-photos.json');
 const OUT = path.join(__dirname, '..', 'output', 'almaza-insert.sql');
 const NOTES_TAG = '[almaza-stage 2026-07-14]';
+
+// wp -> [R2 photo urls]. Empty {} if the upload hasn't run.
+const R2 = fs.existsSync(R2MAP) ? JSON.parse(fs.readFileSync(R2MAP, 'utf8')) : {};
 
 // --- SQL literal helpers -----------------------------------------------------
 // A text literal: wrap in single quotes, doubling any internal single quote.
@@ -55,7 +59,7 @@ const COLUMNS = [
   'compound', 'area', 'city',
   'lat', 'lng', 'source_url',
   'status', 'pricing_model', 'service_fee_percent', 'cleaning_fee_egp',
-  'amenities', 'min_nights', 'notes',
+  'amenities', 'photo_urls', 'cover_url', 'min_nights', 'notes',
 ];
 
 function rowTuple(u) {
@@ -84,6 +88,8 @@ function rowTuple(u) {
     '0',                                  // service_fee_percent
     '0',                                  // cleaning_fee_egp
     sqlTextArray(u.amenities),            // amenities
+    sqlTextArray(R2[u.wp]),               // photo_urls (R2; '{}' if not uploaded)
+    (R2[u.wp] && R2[u.wp][0]) ? sqlText(R2[u.wp][0]) : 'NULL', // cover_url
     'NULL',                               // min_nights (filled later from calendar)
     sqlText(NOTES_TAG),                   // notes
   ];
