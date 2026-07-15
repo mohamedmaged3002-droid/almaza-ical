@@ -4,13 +4,13 @@
 Three tabs (mirrors "Brassbell Onboarding OTAs"):
   1. Almaza Master  — one row per unit (identity, photos, iCal, guests, coords).
   2. Monthly Prices — one row per unit; a column per month with the real nightly
-     USD. If a month's price changes mid-month the cell shows the exact day
-     ranges (e.g. "1–22: $380 / 23–31: $440"). Per-row green→red heatmap.
-  3. Price Ranges   — one row per continuous date range at one flat nightly USD.
+     EGP. If a month's price changes mid-month the cell shows the exact day
+     ranges (e.g. "1–22: 19,000 / 23–31: 22,000"). Per-row green→red heatmap.
+  3. Price Ranges   — one row per continuous date range at one flat nightly EGP.
 
-Prices are the operator's real EGP rates (period price, else Default Rate)
-converted to USD at the pinned FX below — the same convention as the Brassbell
-OTA sheet. NO network, NO DB.
+Prices are the operator's real EGP rates (named period price, else the Default
+Rate) — exactly as shown on almazabay.lodgify.com. No currency conversion. The
+OTA team converts at listing time. NO network, NO DB.
 """
 import json
 import os
@@ -25,8 +25,7 @@ INDEX_JSON = os.path.join(HERE, "docs", "index.json")
 DAILY_JSON = os.path.join(HERE, "output", "daily-prices.json")
 OUT = os.path.join(HERE, "Almaza Master.xlsx")
 
-# Pinned EGP->USD for OTA listings (same convention as the Brassbell sheet).
-FX = 50
+CUR = "EGP"
 ICAL_BASE = "https://mohamedmaged3002-droid.github.io/almaza-ical/"
 GALLERY_BASE = "https://mohamedmaged3002-droid.github.io/almaza-ical/photos/"
 
@@ -36,7 +35,6 @@ MONTHS = [("06", "Jun '26"), ("07", "Jul '26"), ("08", "Aug '26"),
 
 HDR_FILL = PatternFill("solid", fgColor="1F4E79")
 HDR_FONT = Font(bold=True, color="FFFFFF")
-BLANK_FILL = PatternFill("solid", fgColor="EDEDED")
 
 
 # ----- data loading ----------------------------------------------------------
@@ -72,34 +70,34 @@ def daily_of(daily, u):
     return daily.get(str(u.get("wp"))) or daily.get(u.get("wp")) or []
 
 
-# ----- pricing helpers -------------------------------------------------------
-def usd(egp):
-    return round(egp / FX)
+# ----- pricing helpers (raw EGP, no conversion) ------------------------------
+def money(egp):
+    return f"{egp:,}"                     # e.g. 19000 -> "19,000"
 
 
 def month_segments(daily_rows, mm):
-    """Day-of-month runs of one price in month mm: [{d1, d2, usd}]."""
+    """Day-of-month runs of one price in month mm: [{d1, d2, egp}]."""
     days = sorted((r for r in daily_rows if r["date"][5:7] == mm), key=lambda x: x["date"])
     segs = []
     for r in days:
-        d, p = int(r["date"][8:10]), usd(r["price"])
-        if segs and segs[-1]["usd"] == p and segs[-1]["d2"] == d - 1:
+        d, p = int(r["date"][8:10]), r["price"]
+        if segs and segs[-1]["egp"] == p and segs[-1]["d2"] == d - 1:
             segs[-1]["d2"] = d
         else:
-            segs.append({"d1": d, "d2": d, "usd": p})
+            segs.append({"d1": d, "d2": d, "egp": p})
     return segs
 
 
 def month_cell(daily_rows, mm):
-    """(display_text, representative_usd_for_colour). Blank if no priced days."""
+    """(display_text, representative_egp_for_colour). Blank if no priced days."""
     segs = month_segments(daily_rows, mm)
     if not segs:
         return "", None
     if len(segs) == 1:
-        return f"${segs[0]['usd']}", segs[0]["usd"]
-    lines = [(f"{s['d1']}–{s['d2']}: ${s['usd']}" if s["d1"] != s["d2"] else f"{s['d1']}: ${s['usd']}")
+        return money(segs[0]["egp"]), segs[0]["egp"]
+    lines = [(f"{s['d1']}–{s['d2']}: {money(s['egp'])}" if s["d1"] != s["d2"] else f"{s['d1']}: {money(s['egp'])}")
              for s in segs]
-    prices = sorted(usd(r["price"]) for r in daily_rows if r["date"][5:7] == mm)
+    prices = sorted(r["price"] for r in daily_rows if r["date"][5:7] == mm)
     return "\n".join(lines), prices[len(prices) // 2]   # median for the heatmap
 
 
@@ -117,15 +115,15 @@ def next_day(iso_date):
 
 
 def segments_for(daily_rows):
-    """Full-season contiguous same-price runs: [{start, end, nights, usd}]."""
+    """Full-season contiguous same-price runs: [{start, end, nights, egp}]."""
     segs = []
     for r in sorted(daily_rows, key=lambda x: x["date"]):
-        p = usd(r["price"])
-        if segs and segs[-1]["usd"] == p and next_day(segs[-1]["end"]) == r["date"]:
+        p = r["price"]
+        if segs and segs[-1]["egp"] == p and next_day(segs[-1]["end"]) == r["date"]:
             segs[-1]["end"] = r["date"]
             segs[-1]["nights"] += 1
         else:
-            segs.append({"start": r["date"], "end": r["date"], "nights": 1, "usd": p})
+            segs.append({"start": r["date"], "end": r["date"], "nights": 1, "egp": p})
     return segs
 
 
@@ -139,11 +137,12 @@ def style_headers(ws, row):
 
 def build_master(ws, units, min_stays):
     ws.append(["Almaza Bay — OTA listing pack"])
-    ws.append([f"One row per unit. Prices in the Monthly Prices / Price Ranges tabs (USD = EGP ÷ {FX})."])
+    ws.append(["One row per unit. Prices (EGP) are in the Monthly Prices / Price Ranges tabs — "
+               "matches almazabay.lodgify.com 1:1. The OTA team converts currency at listing time."])
     ws.append([])
     cols = ["wp_post_id", "source_code", "operator_unit_code", "sub_community", "title",
             "property_type", "guests_bluekeys", "guests_operator", "bedrooms", "bathrooms",
-            "default_rate_usd", "min_stay", "checkin_time", "checkout_time",
+            "default_rate_egp", "min_stay", "checkin_time", "checkout_time",
             "amenities", "photo_gallery", "photo_count", "ical_url",
             "lat", "lng", "source_url", "status"]
     ws.append(cols)
@@ -156,7 +155,7 @@ def build_master(ws, units, min_stays):
             u.get("subCommunity") or "UNKNOWN — needs review", u.get("title"),
             "Vacation Rental", u.get("guestsBluekeys"), u.get("guestsOperator"),
             u.get("bedrooms"), u.get("bathrooms"),
-            usd(rates["defaultRate"]) if rates.get("defaultRate") is not None else "",
+            rates.get("defaultRate") if rates.get("defaultRate") is not None else "",
             min_stays.get(u.get("wp"), ""), u.get("checkinTime"), u.get("checkoutTime"),
             ", ".join(u.get("amenities") or []),
             GALLERY_BASE + str(u.get("wp")) + ".html", len(u.get("photos") or []),
@@ -165,17 +164,19 @@ def build_master(ws, units, min_stays):
             u.get("sourceUrl"), "draft",
         ])
     widths = {"title": 42, "sub_community": 20, "amenities": 50, "photo_gallery": 56,
-              "ical_url": 56, "source_url": 56, "checkin_time": 12, "checkout_time": 16}
+              "ical_url": 56, "source_url": 56, "checkin_time": 12, "checkout_time": 16,
+              "default_rate_egp": 15}
     for i, c in enumerate(cols, 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = widths.get(c, 13)
     ws.freeze_panes = "A5"
 
 
 def build_monthly(ws, units, daily):
-    ws.append(["Nightly price by month — USD (one row per listing)"])
-    ws.append([f'One row per unit. Each month = real nightly USD (EGP ÷ {FX}). If a month splits '
-               f'(e.g. "1–22: $380 / 23–31: $440") the price changed mid-month — both real, with the '
-               f'exact days. Operator rates cover Jun–Oct 2026 only. Colour: green = low → red = peak (per row).'])
+    ws.append(["Nightly price by month — EGP (one row per listing)"])
+    ws.append(['One row per unit. Each month = real nightly EGP, exactly as on almazabay.lodgify.com. '
+               'If a month splits (e.g. "1–22: 19,000 / 23–31: 22,000") the price changed mid-month — '
+               'both real, with the exact days. Operator rates cover Jun–Oct 2026 only. '
+               'Colour: green = low → red = peak (per row).'])
     ws.append([])
     cols = ["wp", "Code/Slug", "Title", "Area", "Beds"] + [lbl for _, lbl in MONTHS]
     ws.append(cols)
@@ -191,7 +192,6 @@ def build_monthly(ws, units, daily):
             reps.append(rep)
         ws.append([u.get("wp"), u.get("slug"), u.get("title"),
                    u.get("subCommunity") or "", u.get("bedrooms")] + cells)
-        # per-row heatmap over the month reps
         valid = [x for x in reps if x is not None]
         lo, hi = (min(valid), max(valid)) if valid else (0, 0)
         max_lines = 1
@@ -206,26 +206,27 @@ def build_monthly(ws, units, daily):
         ws.row_dimensions[r].height = 15 * max_lines
         r += 1
 
-    for i, w in enumerate([8, 26, 34, 18, 6] + [16] * len(MONTHS), 1):
+    for i, w in enumerate([8, 26, 34, 18, 6] + [17] * len(MONTHS), 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = w
     ws.freeze_panes = "F5"
 
 
 def build_ranges(ws, units, daily):
-    ws.append(["Nightly price by date range — USD (exact, no estimation)"])
-    ws.append([f"Each row = a continuous date range at one flat nightly rate, from Almaza's Lodgify rates "
-               f"(named period price, else the operator's Default Rate; no averaging). USD = EGP ÷ {FX}."])
+    ws.append(["Nightly price by date range — EGP (exact, no estimation)"])
+    ws.append(["Each row = a continuous date range at one flat nightly rate, from Almaza's Lodgify rates "
+               "(named period price, else the operator's Default Rate; no averaging). "
+               "Prices in EGP — exactly as shown on almazabay.lodgify.com."])
     ws.append([])
-    cols = ["wp", "Code/Slug", "Title", "Area", "Beds", "From", "To", "Nights", "Nightly USD"]
+    cols = ["wp", "Code/Slug", "Title", "Area", "Beds", "From", "To", "Nights", "Nightly EGP"]
     ws.append(cols)
     style_headers(ws, 4)
     n = 0
     for u in units:
         for s in segments_for(daily_of(daily, u)):
             ws.append([u.get("wp"), u.get("slug"), u.get("title"), u.get("subCommunity") or "",
-                       u.get("bedrooms"), s["start"], s["end"], s["nights"], f"${s['usd']}"])
+                       u.get("bedrooms"), s["start"], s["end"], s["nights"], s["egp"]])
             n += 1
-    for i, w in enumerate([8, 26, 34, 18, 6, 13, 13, 8, 12], 1):
+    for i, w in enumerate([8, 26, 34, 18, 6, 13, 13, 8, 13], 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = w
     ws.freeze_panes = "A5"
     ws.auto_filter.ref = f"A4:I{ws.max_row}"
@@ -246,7 +247,7 @@ def main():
     wb.save(OUT)
     print(f"Wrote {OUT}")
     print(f"Tabs: {wb.sheetnames}")
-    print(f"Units: {len(units)}  |  Price-range rows: {n_seg}  |  FX: EGP/{FX}=USD")
+    print(f"Units: {len(units)}  |  Price-range rows: {n_seg}  |  Currency: {CUR} (no conversion)")
 
 
 if __name__ == "__main__":
