@@ -4,6 +4,14 @@
 require('dotenv').config();
 const { sendEmail } = require('../src/notify');
 
+// Non-sensitive diagnostic: domain + lengths only (no full address, no password)
+// so we can see WHY auth fails without exposing the credentials.
+const _u = process.env.SMTP_USER || '';
+const _p = process.env.SMTP_PASS || '';
+console.log('SMTP_USER domain:', _u.split('@')[1] || '(no @ / unset)');
+console.log('SMTP_USER local-part length:', (_u.split('@')[0] || '').length);
+console.log('SMTP_PASS length:', _p.length, '(a Gmail app password is 16 chars, or 19 if spaces kept)');
+
 (async () => {
   const res = await sendEmail({
     subject: 'BlueKeys · Almaza price-watch — test email ✅',
