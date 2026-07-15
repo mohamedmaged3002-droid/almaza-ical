@@ -59,6 +59,26 @@ def load_daily():
         return json.load(f)
 
 
+def segments_for(daily_rows):
+    """Collapse per-date rows into contiguous same-price runs.
+    Returns [{start, end, nights, price}] — the exact 'which nights = which
+    price' the OTA team enters as date-range rates."""
+    segs = []
+    for r in sorted(daily_rows, key=lambda x: x["date"]):
+        if segs and segs[-1]["price"] == r["price"] and _next_day(segs[-1]["end"]) == r["date"]:
+            segs[-1]["end"] = r["date"]
+            segs[-1]["nights"] += 1
+        else:
+            segs.append({"start": r["date"], "end": r["date"], "nights": 1, "price": r["price"]})
+    return segs
+
+
+def _next_day(iso_date):
+    from datetime import date, timedelta
+    y, m, d = map(int, iso_date.split("-"))
+    return (date(y, m, d) + timedelta(days=1)).isoformat()
+
+
 def month_price(daily_rows, mm):
     """Accurate price for calendar month `mm` from the per-date rows.
     Returns a single int if every night in the month shares one price, else the
@@ -110,7 +130,7 @@ def row_for(u, min_stays, daily):
     month_vals = [month_price(daily_rows, mm) for mm, _ in MONTHS]
     varies = [name.split("_")[1] for (mm, name), v in zip(MONTHS, month_vals)
               if isinstance(v, str) and v]
-    note = ("nightly rates vary in: " + ", ".join(varies)) if varies else "flat monthly rates"
+    note = ("see 'Nightly Rates' tab — varies in " + ", ".join(varies)) if varies else "flat monthly rates"
     return [
         u.get("sourceCode"),
         u.get("operatorCode"),
@@ -172,9 +192,32 @@ def main():
 
     ws.freeze_panes = "A2"  # freeze the header row
 
+    # --- Second tab: exact night-by-night rates (date-range segments) ----------
+    ws2 = wb.create_sheet("Nightly Rates")
+    NR_COLS = ["wp_post_id", "source_code", "operator_unit_code", "sub_community",
+               "start_date", "end_date", "nights", "price_egp"]
+    ws2.append(NR_COLS)
+    for cell in ws2[1]:
+        cell.font = Font(bold=True)
+    n_seg = 0
+    for u in units:
+        rows = daily.get(str(u.get("wp"))) or daily.get(u.get("wp")) or []
+        for s in segments_for(rows):
+            ws2.append([
+                u.get("wp"), u.get("sourceCode"), u.get("operatorCode"),
+                u.get("subCommunity") or "",
+                s["start"], s["end"], s["nights"], s["price"],
+            ])
+            n_seg += 1
+    for i, w in enumerate([12, 11, 18, 16, 13, 13, 8, 12], start=1):
+        ws2.column_dimensions[get_column_letter(i)].width = w
+    ws2.freeze_panes = "A2"
+    ws2.auto_filter.ref = f"A1:H{ws2.max_row}"  # filterable by unit
+
     wb.save(OUT)
     print(f"Wrote {OUT}")
-    print(f"Sheet rows (units): {len(units)}")
+    print(f"Sheet 1 'Almaza Master' rows (units): {len(units)}")
+    print(f"Sheet 2 'Nightly Rates' segment rows: {n_seg}")
     print(f"Rows with min_stay: {n_min_stay}  |  blank: {len(units) - n_min_stay}")
     print(f"Rows with lat/lng = 'NEEDS PIN': {n_needs_pin}")
 
