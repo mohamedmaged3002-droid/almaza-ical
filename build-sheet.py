@@ -325,6 +325,52 @@ def build_ranges(ws, units, daily):
     return n, n_blk
 
 
+ELIG_END = date(2026, 10, 1)   # eligibility window end (1 Oct)
+ELIG_MIN = 30                  # need >= 30 available nights in the window
+
+
+def build_eligibility(ws, units):
+    """Flag each unit OTA-eligible if it has >= ELIG_MIN nights AVAILABLE (not
+    blocked per the live iCal feed) in [today .. 1 Oct 2026]. Refreshes daily."""
+    today = date.today()
+    window = []
+    d = today
+    while d <= ELIG_END:
+        window.append(d.isoformat())
+        d += timedelta(days=1)
+    n_window = len(window)
+
+    ws.append([f"OTA eligibility — at least {ELIG_MIN} available nights from today to 1 Oct 2026"])
+    ws.append([f"'Available' = a night NOT blocked in the live iCal feed. Window: {today.isoformat()} → "
+               f"2026-10-01 ({n_window} nights). Eligible = >= {ELIG_MIN} available nights. "
+               f"Snapshot as of {today.isoformat()} — refreshes daily with the feeds."])
+    ws.append([])
+    cols = ["wp", "Code/Slug", "Title", "Area", "Beds",
+            "Available nights (→ 1 Oct)", "Window nights", "Eligible?"]
+    ws.append(cols)
+    style_headers(ws, 4)
+
+    green = PatternFill("solid", fgColor="C6EFCE")
+    red = PatternFill("solid", fgColor="FFC7CE")
+    r, n_elig = 5, 0
+    for u in units:
+        blocked = load_blocked(u.get("wp"))
+        avail = sum(1 for iso in window if iso not in blocked)
+        elig = avail >= ELIG_MIN
+        if elig:
+            n_elig += 1
+        ws.append([u.get("wp"), u.get("slug"), u.get("title"), u.get("subCommunity") or "",
+                   u.get("bedrooms"), avail, n_window, "YES" if elig else "NO"])
+        ws.cell(r, 8).fill = green if elig else red
+        r += 1
+
+    for i, w in enumerate([8, 26, 34, 18, 6, 24, 14, 11], 1):
+        ws.column_dimensions[ws.cell(4, i).column_letter].width = w
+    ws.freeze_panes = "A5"
+    ws.auto_filter.ref = f"A4:H{ws.max_row}"
+    return n_elig, n_window
+
+
 def main():
     units = load_units()
     min_stays = load_min_stays()
@@ -333,6 +379,7 @@ def main():
     wb = Workbook()
     build_master(wb.active, units, min_stays)
     wb.active.title = "Almaza Master"
+    n_elig, n_window = build_eligibility(wb.create_sheet("OTA Eligibility", 1), units)
     build_monthly(wb.create_sheet("Monthly Prices"), units, daily)
     n_seg, n_blk = build_ranges(wb.create_sheet("Price Ranges"), units, daily)
 
@@ -340,6 +387,7 @@ def main():
     print(f"Wrote {OUT}")
     print(f"Tabs: {wb.sheetnames}")
     print(f"Units: {len(units)}  |  Price-range rows: {n_seg} ({n_blk} Blocked)  |  Currency: {CUR}")
+    print(f"OTA-eligible (>= {ELIG_MIN} avail nights in {n_window}-night window): {n_elig}/{len(units)}")
 
 
 if __name__ == "__main__":
