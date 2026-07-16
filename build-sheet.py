@@ -2,7 +2,8 @@
 """build-sheet.py — OTA listing-build pack for Almaza Bay, in the Brassbell format.
 
 Three tabs (mirrors "Brassbell Onboarding OTAs"):
-  1. Almaza Master  — one row per unit (identity, photos, iCal, guests, coords).
+  1. Almaza Master  — one row per unit: full identity (incl. Lodgify property/room
+     ids), operator description, amenities, photos, iCal, guests, beds, coords.
   2. Monthly Prices — one row per unit; a column per month with the real nightly
      EGP. If a month's price changes mid-month the cell shows the exact day
      ranges (e.g. "1–22: 19,000 / 23–31: 22,000"). Per-row green→red heatmap.
@@ -203,10 +204,12 @@ def build_master(ws, units, min_stays):
                f"BlueKeys' 10% markup — list them as-is (do NOT add anything). 'ota_eligible' = YES when the "
                f"unit has >= {ELIG_MIN} available nights (not blocked) between today and 1 Oct 2026; refreshes daily."])
     ws.append([])
-    cols = ["wp_post_id", "source_code", "operator_unit_code", "sub_community", "title",
-            "property_type", "guests_bluekeys", "guests_operator", "bedrooms", "bathrooms",
+    cols = ["wp_post_id", "source_code", "operator_unit_code",
+            "lodgify_property_id", "lodgify_room_id",
+            "sub_community", "title", "property_type", "guests_bluekeys", "guests_operator",
+            "bedrooms", "beds", "bathrooms",
             "default_rate_egp", "min_stay", "checkin_time", "checkout_time",
-            "amenities", "photo_gallery", "photo_count", "ical_url",
+            "description", "amenities", "photo_gallery", "photo_count", "ical_url",
             "lat", "lng", "source_url", "avail_nights_to_1oct", "ota_eligible"]
     ws.append(cols)
     style_headers(ws, 4)
@@ -223,11 +226,13 @@ def build_master(ws, units, min_stays):
             n_elig += 1
         ws.append([
             u.get("wp"), u.get("sourceCode"), u.get("operatorCode"),
+            u.get("propertyId"), rates.get("roomId"),
             u.get("subCommunity") or "UNKNOWN — needs review", u.get("title"),
             "Vacation Rental", u.get("guestsBluekeys"), u.get("guestsOperator"),
-            u.get("bedrooms"), u.get("bathrooms"),
+            u.get("bedrooms"), u.get("bedrooms"), u.get("bathrooms"),   # beds mirrors bedrooms (Lodgify gives no separate bed count)
             marked(rates.get("defaultRate")) if rates.get("defaultRate") is not None else "",
             min_stays.get(u.get("wp"), ""), u.get("checkinTime"), u.get("checkoutTime"),
+            u.get("description") or "",
             ", ".join(u.get("amenities") or []),
             GALLERY_BASE + str(u.get("wp")) + ".html", photo_count(u),
             ICAL_BASE + str(u.get("wp")) + ".ics",
@@ -238,7 +243,8 @@ def build_master(ws, units, min_stays):
         r += 1
     widths = {"title": 42, "sub_community": 20, "amenities": 50, "photo_gallery": 56,
               "ical_url": 56, "source_url": 56, "checkin_time": 12, "checkout_time": 16,
-              "default_rate_egp": 15, "avail_nights_to_1oct": 20, "ota_eligible": 13}
+              "default_rate_egp": 15, "avail_nights_to_1oct": 20, "ota_eligible": 13,
+              "lodgify_property_id": 16, "lodgify_room_id": 15, "beds": 6, "description": 70}
     for i, c in enumerate(cols, 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = widths.get(c, 13)
     ws.freeze_panes = "A5"
