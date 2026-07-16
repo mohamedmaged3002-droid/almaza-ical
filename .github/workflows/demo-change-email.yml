@@ -1,0 +1,33 @@
+name: Almaza demo change email
+# Manual only. Sends ONE sample of the daily price-change email (same
+# build-changes.py + send-alert.js the cron uses) to a chosen recipient, so you
+# can see the format without waiting for a real price move. Never scheduled.
+on:
+  workflow_dispatch:
+    inputs:
+      to:
+        description: Recipient(s), comma-separated
+        type: string
+        default: 'maged@bluekeys.co'
+permissions: { contents: read }
+concurrency: { group: almaza-demo-email, cancel-in-progress: true }
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: 'npm' }
+      - run: npm ci
+      - run: pip install --quiet openpyxl
+      - name: Build sample change artifacts
+        run: node scripts/make-demo-change.js
+      - name: Build changes xlsx (EGP incl. 10%)
+        run: python build-changes.py
+      - name: Send demo email to the chosen recipient only
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          NOTIFY_EMAIL: ${{ inputs.to }}
+        run: node send-alert.js
