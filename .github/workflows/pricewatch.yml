@@ -41,7 +41,7 @@ jobs:
         env:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          NOTIFY_EMAIL: 'samanoudi@bluekeys.co, maged@bluekeys.co, reservations@bluekeys.co, mfikry772007@gmail.com'
+          NOTIFY_EMAIL: 'samanoudi@bluekeys.co, maged@bluekeys.co, reservations@bluekeys.co, mfikry772007@gmail.com, mohamedahmedzaki17@gmail.com'
         run: node send-alert.js
 
       # Rebuild the OTA sheet with today's prices (build-sheet.py reads the committed
