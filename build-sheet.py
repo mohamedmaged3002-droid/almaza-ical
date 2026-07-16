@@ -115,13 +115,25 @@ def load_daily():
         return json.load(f)
 
 
+# BlueKeys 10% markup baked into the OTA-sheet nightly prices (D-036), so the OTA
+# team lists the final guest price directly — no mental math. On bluekeys.co the
+# same 10% shows as a separate "Service fee (10%)" line; unit_daily_prices in the
+# DB stays RAW (this markup is sheet-presentation only).
+MARKUP = 1.10
+
+
+def marked(egp):
+    return round(egp * MARKUP)
+
+
 def daily_of(daily, u):
-    return daily.get(str(u.get("wp"))) or daily.get(u.get("wp")) or []
+    rows = daily.get(str(u.get("wp"))) or daily.get(u.get("wp")) or []
+    return [{"date": r["date"], "price": marked(r["price"])} for r in rows]  # +10%
 
 
-# ----- pricing helpers (raw EGP, no conversion) ------------------------------
+# ----- pricing helpers (EGP, incl. 10% markup) -------------------------------
 def money(egp):
-    return f"{egp:,}"                     # e.g. 19000 -> "19,000"
+    return f"{egp:,}"                     # e.g. 20900 -> "20,900"
 
 
 def month_segments(daily_rows, mm):
@@ -187,9 +199,9 @@ def style_headers(ws, row):
 def build_master(ws, units, min_stays):
     window = eligibility_window()
     ws.append(["Almaza Bay — OTA listing pack"])
-    ws.append([f"One row per unit. Prices (EGP) in the Monthly Prices / Price Ranges tabs — matches "
-               f"almazabay.lodgify.com 1:1. 'ota_eligible' = YES when the unit has >= {ELIG_MIN} available "
-               f"nights (not blocked) between today and 1 Oct 2026; refreshes daily with the feeds."])
+    ws.append([f"One row per unit. Prices (EGP) in the Monthly Prices / Price Ranges tabs ALREADY INCLUDE "
+               f"BlueKeys' 10% markup — list them as-is (do NOT add anything). 'ota_eligible' = YES when the "
+               f"unit has >= {ELIG_MIN} available nights (not blocked) between today and 1 Oct 2026; refreshes daily."])
     ws.append([])
     cols = ["wp_post_id", "source_code", "operator_unit_code", "sub_community", "title",
             "property_type", "guests_bluekeys", "guests_operator", "bedrooms", "bathrooms",
@@ -214,7 +226,7 @@ def build_master(ws, units, min_stays):
             u.get("subCommunity") or "UNKNOWN — needs review", u.get("title"),
             "Vacation Rental", u.get("guestsBluekeys"), u.get("guestsOperator"),
             u.get("bedrooms"), u.get("bathrooms"),
-            rates.get("defaultRate") if rates.get("defaultRate") is not None else "",
+            marked(rates.get("defaultRate")) if rates.get("defaultRate") is not None else "",
             min_stays.get(u.get("wp"), ""), u.get("checkinTime"), u.get("checkoutTime"),
             ", ".join(u.get("amenities") or []),
             GALLERY_BASE + str(u.get("wp")) + ".html", photo_count(u),
@@ -234,11 +246,11 @@ def build_master(ws, units, min_stays):
 
 
 def build_monthly(ws, units, daily):
-    ws.append(["Nightly price by month — EGP (one row per listing)"])
-    ws.append(['One row per unit. Each month = real nightly EGP, exactly as on almazabay.lodgify.com. '
-               'If a month splits (e.g. "1–22: 19,000 / 23–31: 22,000") the price changed mid-month — '
-               'both real, with the exact days. Operator rates cover Jun–Oct 2026 only. '
-               'Colour: green = low → red = peak (per row).'])
+    ws.append(["Nightly price by month — EGP, incl. BlueKeys 10% markup (one row per listing)"])
+    ws.append(['One row per unit. Each month = the nightly EGP to LIST ON THE OTA — it already includes '
+               'BlueKeys’ 10% markup, so use it as-is (do not add anything). If a month splits '
+               '(e.g. "1–22: 20,900 / 23–31: 24,200") the price changed mid-month, with the exact days. '
+               'Operator season Jun–Oct 2026 only. Colour: green = low → red = peak (per row).'])
     ws.append([])
     cols = ["wp", "Code/Slug", "Title", "Area", "Beds"] + [lbl for _, lbl in MONTHS]
     ws.append(cols)
@@ -307,13 +319,12 @@ def merged_segments(daily_rows, blocked):
 
 
 def build_ranges(ws, units, daily):
-    ws.append(["Nightly price by date range — EGP (exact, no estimation)"])
-    ws.append(["Each row = a continuous date range at one flat nightly rate, from Almaza's Lodgify rates "
-               "(named period price, else the operator's Default Rate; no averaging). Prices in EGP — "
-               "exactly as on almazabay.lodgify.com. Grey 'Blocked' rows = nights the calendar shows "
-               "unavailable (snapshot of the live iCal feed — re-check the feed before booking)."])
+    ws.append(["Nightly price by date range — EGP, incl. BlueKeys 10% markup (exact, no estimation)"])
+    ws.append(["Each row = a continuous date range at one flat nightly rate to LIST ON THE OTA (Almaza's "
+               "rate + BlueKeys' 10% markup, already baked in — use as-is). Grey 'Blocked' rows = nights the "
+               "calendar shows unavailable (snapshot of the live iCal feed — re-check the feed before booking)."])
     ws.append([])
-    cols = ["wp", "Code/Slug", "Title", "Area", "Beds", "From", "To", "Nights", "Nightly EGP"]
+    cols = ["wp", "Code/Slug", "Title", "Area", "Beds", "From", "To", "Nights", "Nightly EGP (incl. 10%)"]
     ws.append(cols)
     style_headers(ws, 4)
     n = n_blk = 0
