@@ -232,7 +232,10 @@ def build_master(ws, units, min_stays):
             u.get("bedrooms"), u.get("bedrooms"), u.get("bathrooms"),   # beds mirrors bedrooms (Lodgify gives no separate bed count)
             marked(rates.get("defaultRate")) if rates.get("defaultRate") is not None else "",
             min_stays.get(u.get("wp"), ""), u.get("checkinTime"), u.get("checkoutTime"),
-            u.get("description") or "",
+            # collapse the operator's hard line-breaks to single spaces so the cell
+            # is ONE line (Google's viewer expands a row to fit any embedded \n,
+            # which blew one row up to full-screen). Full text still copies whole.
+            re.sub(r"\s+", " ", u.get("description") or "").strip(),
             ", ".join(u.get("amenities") or []),
             GALLERY_BASE + str(u.get("wp")) + ".html", photo_count(u),
             ICAL_BASE + str(u.get("wp")) + ".ics",
