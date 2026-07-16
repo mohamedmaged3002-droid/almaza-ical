@@ -24,7 +24,6 @@ const { discoverRoster } = require('./src/discover');
 const { parseRates, dailyPricesForSeason } = require('./src/lodgify');
 const { operatorCode } = require('./src/codes');
 const { diffAll } = require('./src/changes');
-const { smtpConfigured, sendEmail } = require('./src/notify');
 
 // Same season window as build-prices-sql.js — the operator's active season.
 const SEASON_START = '2026-06-01';
@@ -34,6 +33,13 @@ const UNITS_PATH = path.join(__dirname, 'data', 'units.json');
 const STATE_PATH = path.join(__dirname, 'state', 'prices.json');
 const ROSTER_PATH = path.join(__dirname, 'data', 'roster.json');
 const DAILY_PATH = path.join(__dirname, 'output', 'daily-prices.json'); // for build-sheet.py
+
+// Brassbell-style change artifacts (out/): consumed by the workflow's downstream
+// steps — build-changes.py reads changed-units.json, send-alert.js reads
+// change-message.json. Written ONLY on a real change (not firstRun/seed/no-change).
+const OUT_DIR = path.join(__dirname, 'out');
+const CHANGED_UNITS_PATH = path.join(OUT_DIR, 'changed-units.json'); // -> build-changes.py
+const CHANGE_MSG_PATH = path.join(OUT_DIR, 'change-message.json');   // -> send-alert.js
 
 const DRY = process.argv.includes('--dry-run');
 const SEED = process.argv.includes('--seed');
@@ -130,6 +136,31 @@ function buildSummary(diff, units) {
   return { subject, body: lines.join('\n').trimEnd() + '\n' };
 }
 
+// Brassbell-style split: instead of sending inline, DETECT here and drop artifacts
+// for the downstream workflow steps. changed-units.json is the price-change payload
+// build-changes.py turns into the attached xlsx (one unit per changed unit, ranges
+// in RAW EGP — build-changes.py applies the same 10% markup as the OTA sheet);
+// change-message.json is the {subject, body} send-alert.js emails. A roster-only
+// change still writes change-message.json (so the email fires) with an empty units
+// list (so no xlsx is built).
+function writeChangeArtifacts(diff, units, summary) {
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+  const dateStr = new Date().toISOString().slice(0, 10);
+  const byWp = new Map(units.map((u) => [String(u.wp), u]));
+  const changedUnits = diff.priceChanges.map((pc) => {
+    const u = byWp.get(String(pc.wp));
+    return {
+      wp: pc.wp,
+      code: u ? operatorCode(u.title) : null,
+      title: u ? u.title : `wp${pc.wp}`,
+      ranges: pc.ranges, // [{ from, to, oldEgp, newEgp }] — RAW EGP
+    };
+  });
+  fs.writeFileSync(CHANGED_UNITS_PATH, JSON.stringify({ dateStr, units: changedUnits }));
+  fs.writeFileSync(CHANGE_MSG_PATH, JSON.stringify({ subject: summary.subject, body: summary.body }));
+  console.log(`Artifacts: out/changed-units.json (${changedUnits.length} priced units), out/change-message.json.`);
+}
+
 async function main() {
   const units = loadJson(UNITS_PATH, null);
   if (!Array.isArray(units) || !units.length) throw new Error('data/units.json missing or empty');
@@ -201,20 +232,21 @@ async function main() {
     return 0;
   }
 
-  const { subject, body } = buildSummary(diff, units);
+  const summary = buildSummary(diff, units);
   console.log(`Changes: ${diff.priceChanges.length} priced units, +${diff.addedUnits.length} / -${diff.removedUnits.length} roster.`);
-  console.log('---\n' + subject + '\n\n' + body + '---');
+  console.log('---\n' + summary.subject + '\n\n' + summary.body + '---');
 
   if (DRY) {
-    console.log('[dry-run] changes detected; NOT emailing and NOT writing baseline.');
+    console.log('[dry-run] changes detected; NOT writing artifacts and NOT writing baseline.');
     return 0;
   }
-  if (!smtpConfigured()) {
-    console.error('Changes detected but SMTP is not configured — failing loudly so the alert is not silently dropped.');
-    return 1;
-  }
-  const { sent } = await sendEmail({ subject, body });
-  if (!sent) { console.error('Alert email failed after retries; NOT writing baseline (will re-send next run).'); return 1; }
+
+  // Brassbell-style split: pricewatch DETECTS + drops artifacts here; the workflow's
+  // build-changes.py step builds the xlsx and send-alert.js delivers the email. The
+  // baseline advances now (as it did after a successful inline send) — a failed later
+  // send loses only that one alert, exactly as in brassbell-ical, and never re-fires a
+  // stale change on the next run.
+  writeChangeArtifacts(diff, units, summary);
   writeBaseline(nextBaseline, newRoster);
   return 0;
 }

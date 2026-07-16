@@ -18,12 +18,31 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npx playwright install --with-deps chromium
+      - name: Install openpyxl (for the changes xlsx + OTA sheet)
+        run: pip install --quiet openpyxl
+
+      # Detect price/roster changes and drop artifacts (out/changed-units.json +
+      # out/change-message.json) on a real change. No email is sent here — that moves
+      # to Send alert below (brassbell-ical split). On dry-run it only prints.
       - name: Watch prices
+        run: ${{ inputs.dry_run && 'node pricewatch.js --dry-run' || 'node pricewatch.js' }}
+
+      # Turn out/changed-units.json into the attached xlsx (out/almaza-changes.xlsx),
+      # EGP incl. the same 10% markup as the OTA sheet. No-op if nothing changed.
+      - name: Build changes xlsx
+        if: ${{ inputs.dry_run != true }}
+        run: python build-changes.py
+
+      # Email the team the change summary + attach the changes xlsx — ONLY when
+      # out/change-message.json exists (a real change). Exits non-zero if the send
+      # fails, so an undelivered alert surfaces in the run.
+      - name: Send alert
+        if: ${{ inputs.dry_run != true }}
         env:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           NOTIFY_EMAIL: 'samanoudi@bluekeys.co, maged@bluekeys.co, reservations@bluekeys.co, mfikry772007@gmail.com'
-        run: ${{ inputs.dry_run && 'node pricewatch.js --dry-run' || 'node pricewatch.js' }}
+        run: node send-alert.js
 
       # Rebuild the OTA sheet with today's prices (build-sheet.py reads the committed
       # static bundle data/sheet-content.json + the fresh output/daily-prices.json the
