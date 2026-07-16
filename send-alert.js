@@ -1,8 +1,11 @@
 // Email the CHANGED UNITS ONLY as an xlsx attachment — ONLY when pricewatch.js
 // detected a real change (out/change-message.json exists). Mirrors
 // brassbell-ical/send-alert.js, adapted to Almaza's src/notify.js sendEmail API.
-// The full OTA sheet is NOT attached here (it still refreshes to Drive daily); the
-// email body is buildSummary's text (the ranges) and the xlsx carries the detail.
+// The full OTA sheet is NOT attached here (it still refreshes to Drive daily).
+// Attachment-only email (Maged, 2026-07-16): when the xlsx is present we send an
+// EMPTY text body — all the detail is in the sheet. Exception: a roster-only
+// change has no xlsx and its added/removed list lives only in the body, so we
+// keep the body in that case (else the email would arrive empty).
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
@@ -21,6 +24,9 @@ const { sendEmail } = require('./src/notify');
     : [];
   if (!attachments.length) console.log('send-alert: changes sheet not found — sending text-only (roster-only change or build skipped).');
 
-  const { sent } = await sendEmail({ subject: msg.subject, body: msg.body, attachments });
+  // Attachment-only: drop the text body when the xlsx is attached; keep it for
+  // roster-only changes (no attachment) so their added/removed list still sends.
+  const body = attachments.length ? '' : msg.body;
+  const { sent } = await sendEmail({ subject: msg.subject, body, attachments });
   if (!sent) process.exitCode = 1;
 })().catch((e) => { console.error(String(e)); process.exit(1); });
