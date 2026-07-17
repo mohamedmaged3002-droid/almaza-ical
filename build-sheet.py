@@ -116,6 +116,25 @@ def load_daily():
         return json.load(f)
 
 
+DRIVE_LINKS_JSON = os.path.join(HERE, "data", "drive-photo-links.json")
+
+
+def load_drive_links():
+    """wp -> per-unit Google Drive photo-folder share link (written by
+    scripts/export-photos-to-drive.py, on maged@bluekeys.co). The OTA sheet
+    links these instead of the R2/Pages gallery so the team browses a real Drive
+    folder of photos per unit. Falls back to the Pages gallery for any unit not
+    yet exported."""
+    if not os.path.exists(DRIVE_LINKS_JSON):
+        return {}
+    try:
+        with open(DRIVE_LINKS_JSON, encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
+    return {str(k): (v or {}).get("link") for k, v in data.items() if (v or {}).get("link")}
+
+
 # BlueKeys 10% markup baked into the OTA-sheet nightly prices (D-036), so the OTA
 # team lists the final guest price directly — no mental math. On bluekeys.co the
 # same 10% shows as a separate "Service fee (10%)" line; unit_daily_prices in the
@@ -197,7 +216,7 @@ def style_headers(ws, row):
         cell.alignment = Alignment(vertical="center")
 
 
-def build_master(ws, units, min_stays):
+def build_master(ws, units, min_stays, drive_links):
     window = eligibility_window()
     ws.append(["Almaza Bay — OTA listing pack"])
     ws.append([f"One row per unit. Prices (EGP) in the Monthly Prices / Price Ranges tabs ALREADY INCLUDE "
@@ -209,7 +228,7 @@ def build_master(ws, units, min_stays):
             "sub_community", "title", "property_type", "guests_bluekeys", "guests_operator",
             "bedrooms", "beds", "bathrooms",
             "default_rate_egp", "min_stay", "checkin_time", "checkout_time",
-            "description", "amenities", "photo_gallery", "photo_count", "ical_url",
+            "description", "amenities", "photos_drive_folder", "photo_count", "ical_url",
             "lat", "lng", "source_url", "avail_nights_to_1oct", "ota_eligible"]
     ws.append(cols)
     style_headers(ws, 4)
@@ -237,14 +256,15 @@ def build_master(ws, units, min_stays):
             # which blew one row up to full-screen). Full text still copies whole.
             re.sub(r"\s+", " ", u.get("description") or "").strip(),
             ", ".join(u.get("amenities") or []),
-            GALLERY_BASE + str(u.get("wp")) + ".html", photo_count(u),
+            drive_links.get(str(u.get("wp"))) or (GALLERY_BASE + str(u.get("wp")) + ".html"),
+            photo_count(u),
             ICAL_BASE + str(u.get("wp")) + ".ics",
             "NEEDS PIN" if lat is None else lat, "NEEDS PIN" if lng is None else lng,
             u.get("sourceUrl"), avail, "YES" if elig else "NO",
         ])
         ws.cell(r, elig_col).fill = green if elig else red
         r += 1
-    widths = {"title": 42, "sub_community": 20, "amenities": 50, "photo_gallery": 56,
+    widths = {"title": 42, "sub_community": 20, "amenities": 50, "photos_drive_folder": 56,
               "ical_url": 56, "source_url": 56, "checkin_time": 12, "checkout_time": 16,
               "default_rate_egp": 15, "avail_nights_to_1oct": 20, "ota_eligible": 13,
               "lodgify_property_id": 16, "lodgify_room_id": 15, "beds": 6, "description": 70}
@@ -381,9 +401,10 @@ def main():
     units = load_units()
     min_stays = load_min_stays()
     daily = load_daily()
+    drive_links = load_drive_links()
 
     wb = Workbook()
-    n_elig = build_master(wb.active, units, min_stays)
+    n_elig = build_master(wb.active, units, min_stays, drive_links)
     wb.active.title = "Almaza Master"
     build_monthly(wb.create_sheet("Monthly Prices"), units, daily)
     n_seg, n_blk = build_ranges(wb.create_sheet("Price Ranges"), units, daily)
