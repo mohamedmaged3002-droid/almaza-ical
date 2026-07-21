@@ -2,7 +2,7 @@ name: Sync Almaza availability
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # every 6h
+    - cron: '0 */3 * * *'   # every 3h (was 6h) — shrink the resell double-booking window; a run takes ~48m so 3h leaves no overlap, and the polite backoff/circuit-breaker keep Lodgify rate-limits in check
   workflow_dispatch: {}
 
 permissions:
