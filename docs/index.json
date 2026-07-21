@@ -1,24 +1,24 @@
 {
-  "updatedAt": "2026-07-21T20:05:02.215Z",
+  "updatedAt": "2026-07-21T22:49:43.442Z",
   "skipped": [],
   "properties": [
     {
       "wp": 91001,
       "title": "72D Bay homes 1 Bedroom Chalet with Large Roof",
       "slug": "72d-bay-homes-1-bedroom-chalet-with-large-roof",
-      "availableCount": 177,
-      "blockedCount": 36,
+      "availableCount": 178,
+      "blockedCount": 35,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:17:56.097Z"
+      "updatedAt": "2026-07-21T22:02:38.299Z"
     },
     {
       "wp": 91002,
       "title": "F01-S1 Residences 1 Bedroom Chalet",
       "slug": "f01-s1-residences-1-bedroom-chalet",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:18:14.736Z"
+      "updatedAt": "2026-07-21T22:02:56.976Z"
     },
     {
       "wp": 91003,
@@ -27,106 +27,106 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:18:33.440Z"
+      "updatedAt": "2026-07-21T22:03:15.692Z"
     },
     {
       "wp": 91004,
       "title": "E02-G06 Beachtown 2 Bedroom Apartment",
       "slug": "e02-g06-beachtown-2-bedroom-apartment",
-      "availableCount": 177,
-      "blockedCount": 36,
+      "availableCount": 178,
+      "blockedCount": 35,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:18:52.130Z"
+      "updatedAt": "2026-07-21T22:03:34.503Z"
     },
     {
       "wp": 91005,
       "title": "E01-G08 Beachtown 2 Bedroom Apartment",
       "slug": "e01-g08-beachtown-2-bedroom-apartment",
-      "availableCount": 172,
-      "blockedCount": 41,
+      "availableCount": 173,
+      "blockedCount": 40,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:19:10.916Z"
+      "updatedAt": "2026-07-21T22:03:53.197Z"
     },
     {
       "wp": 91006,
       "title": "D08-G03 Beachtown 2 Bedroom Apartment",
       "slug": "d08-g03-beachtown-2-bedroom-apartment",
-      "availableCount": 178,
-      "blockedCount": 35,
+      "availableCount": 179,
+      "blockedCount": 34,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:19:29.663Z"
+      "updatedAt": "2026-07-21T22:04:12.043Z"
     },
     {
       "wp": 91007,
       "title": "D01-G02 Beachtown 2 Bedroom Apartment",
       "slug": "d01-g02-beachtown-2-bedroom-apartment",
-      "availableCount": 178,
-      "blockedCount": 35,
+      "availableCount": 179,
+      "blockedCount": 34,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:19:48.349Z"
+      "updatedAt": "2026-07-21T22:04:30.822Z"
     },
     {
       "wp": 91008,
       "title": "F01-G08 Beachtown 2 Bedroom + Maid's Room",
       "slug": "f01-g08-beachtown-2-bedroom-maids-room",
-      "availableCount": 176,
-      "blockedCount": 37,
+      "availableCount": 177,
+      "blockedCount": 36,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:20:07.061Z"
+      "updatedAt": "2026-07-21T22:04:49.504Z"
     },
     {
       "wp": 91009,
       "title": "C02-G04 Beachtown 2 Bedroom Apartment",
       "slug": "c02-g04-beachtown-2-bedroom-apartment",
-      "availableCount": 173,
-      "blockedCount": 40,
+      "availableCount": 174,
+      "blockedCount": 39,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:20:25.734Z"
+      "updatedAt": "2026-07-21T22:05:08.197Z"
     },
     {
       "wp": 91010,
       "title": "F02-F1 Residences 1 Bedroom Chalet",
       "slug": "f02-f1-residences-1-bedroom-chalet",
-      "availableCount": 183,
-      "blockedCount": 30,
+      "availableCount": 184,
+      "blockedCount": 29,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:20:44.411Z"
+      "updatedAt": "2026-07-21T22:05:27.010Z"
     },
     {
       "wp": 91011,
       "title": "C02-S08 Beachtown 2 Bedroom Apartment",
       "slug": "c02-s08-beachtown-2-bedroom-apartment",
-      "availableCount": 187,
-      "blockedCount": 26,
+      "availableCount": 188,
+      "blockedCount": 25,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:21:03.344Z"
+      "updatedAt": "2026-07-21T22:05:45.769Z"
     },
     {
       "wp": 91012,
       "title": "C02-F04 Beachtown 2 Bedroom Apartment",
       "slug": "c02-f04-beachtown-2-bedroom-apartment",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:21:22.670Z"
+      "updatedAt": "2026-07-21T22:06:04.621Z"
     },
     {
       "wp": 91013,
       "title": "C08-F05 Beachtown 2 Bedroom Apartment",
       "slug": "c08-f05-beachtown-2-bedroom-apartment",
-      "availableCount": 186,
-      "blockedCount": 27,
+      "availableCount": 187,
+      "blockedCount": 26,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:21:41.522Z"
+      "updatedAt": "2026-07-21T22:06:23.378Z"
     },
     {
       "wp": 91014,
       "title": "D01-F02 Beachtown 2 Bedroom Apartment",
       "slug": "d01-f02-beachtown-2-bedroom-apartment",
-      "availableCount": 174,
-      "blockedCount": 39,
+      "availableCount": 175,
+      "blockedCount": 38,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:22:00.308Z"
+      "updatedAt": "2026-07-21T22:06:42.057Z"
     },
     {
       "wp": 91015,
@@ -135,25 +135,25 @@
       "availableCount": 175,
       "blockedCount": 38,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:22:19.211Z"
+      "updatedAt": "2026-07-21T22:07:00.754Z"
     },
     {
       "wp": 91016,
       "title": "B02-S03 Beachtown 2 Bedroom Apartment",
       "slug": "b02-s03-beachtown-2-bedroom-apartment",
-      "availableCount": 183,
-      "blockedCount": 30,
+      "availableCount": 184,
+      "blockedCount": 29,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:22:37.922Z"
+      "updatedAt": "2026-07-21T22:07:19.496Z"
     },
     {
       "wp": 91017,
       "title": "C08-F01 Beachtown 2 Bedroom Apartment",
       "slug": "c08-f01-beachtown-2-bedroom-apartment",
-      "availableCount": 181,
-      "blockedCount": 32,
+      "availableCount": 182,
+      "blockedCount": 31,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:22:56.643Z"
+      "updatedAt": "2026-07-21T22:07:38.169Z"
     },
     {
       "wp": 91018,
@@ -162,43 +162,43 @@
       "availableCount": 187,
       "blockedCount": 26,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:23:15.305Z"
+      "updatedAt": "2026-07-21T22:07:56.882Z"
     },
     {
       "wp": 91019,
       "title": "B02-G04 Beachtown 2 Bedroom Apartment",
       "slug": "b02-g04-beachtown-2-bedroom-apartment",
-      "availableCount": 173,
-      "blockedCount": 40,
+      "availableCount": 174,
+      "blockedCount": 39,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:23:33.969Z"
+      "updatedAt": "2026-07-21T22:08:15.758Z"
     },
     {
       "wp": 91020,
       "title": "D07-G02 Beachtown 2 Bedroom + Maid’s Room Apartment",
       "slug": "d07-g02-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:23:52.664Z"
+      "updatedAt": "2026-07-21T22:08:34.431Z"
     },
     {
       "wp": 91021,
       "title": "D07-F08 Beachtown 2 Bedroom + Maid’s Room Apartment",
       "slug": "d07-f08-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:24:11.378Z"
+      "updatedAt": "2026-07-21T22:08:53.158Z"
     },
     {
       "wp": 91022,
       "title": "B02-S04 Beachtown 2 Bedroom Apartment",
       "slug": "b02-s04-beachtown-2-bedroom-apartment",
-      "availableCount": 178,
-      "blockedCount": 35,
+      "availableCount": 179,
+      "blockedCount": 34,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:24:30.125Z"
+      "updatedAt": "2026-07-21T22:09:11.871Z"
     },
     {
       "wp": 91023,
@@ -206,8 +206,8 @@
       "slug": "d02-g06-beachtown-2-bedroom-apartment",
       "availableCount": 176,
       "blockedCount": 37,
-      "minStay": 4,
-      "updatedAt": "2026-07-21T19:24:48.842Z"
+      "minStay": 7,
+      "updatedAt": "2026-07-21T22:09:30.595Z"
     },
     {
       "wp": 91024,
@@ -216,25 +216,25 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:25:07.594Z"
+      "updatedAt": "2026-07-21T22:09:49.300Z"
     },
     {
       "wp": 91025,
       "title": "F01-S02 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "f01-s02-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 168,
-      "blockedCount": 45,
+      "availableCount": 169,
+      "blockedCount": 44,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:25:26.305Z"
+      "updatedAt": "2026-07-21T22:10:08.057Z"
     },
     {
       "wp": 91026,
       "title": "C01-S07 Beachtown 2 bedroom + Maid's Room Apartment",
       "slug": "c01-s07-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:25:45.033Z"
+      "updatedAt": "2026-07-21T22:10:26.778Z"
     },
     {
       "wp": 91027,
@@ -243,25 +243,25 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:26:03.730Z"
+      "updatedAt": "2026-07-21T22:10:45.601Z"
     },
     {
       "wp": 91028,
       "title": "E01-G06 Beachtown 2 Bedroom Apartment",
       "slug": "e01-g06-beachtown-2-bedroom-apartment",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:26:22.508Z"
+      "updatedAt": "2026-07-21T22:11:04.360Z"
     },
     {
       "wp": 91029,
       "title": "D08-S04 Beachtown 2 Bedroom Apartment",
       "slug": "d08-s04-beachtown-2-bedroom-apartment",
-      "availableCount": 187,
-      "blockedCount": 26,
+      "availableCount": 188,
+      "blockedCount": 25,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:26:41.168Z"
+      "updatedAt": "2026-07-21T22:11:23.065Z"
     },
     {
       "wp": 91030,
@@ -270,7 +270,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:27:00.036Z"
+      "updatedAt": "2026-07-21T22:11:41.835Z"
     },
     {
       "wp": 91031,
@@ -279,16 +279,16 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:27:18.784Z"
+      "updatedAt": "2026-07-21T22:12:00.525Z"
     },
     {
       "wp": 91032,
       "title": "C02-S06 Beachtown 2 Bedroom Apartment",
       "slug": "c02-s06-beachtown-2-bedroom-apartment",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:27:37.451Z"
+      "updatedAt": "2026-07-21T22:12:19.202Z"
     },
     {
       "wp": 91033,
@@ -297,43 +297,43 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:27:56.157Z"
+      "updatedAt": "2026-07-21T22:12:37.865Z"
     },
     {
       "wp": 91034,
       "title": "C08-F04 Beachtown 2 Bedroom Apartment",
       "slug": "c08-f04-beachtown-2-bedroom-apartment",
-      "availableCount": 177,
-      "blockedCount": 36,
+      "availableCount": 178,
+      "blockedCount": 35,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:28:14.898Z"
+      "updatedAt": "2026-07-21T22:12:56.630Z"
     },
     {
       "wp": 91035,
       "title": "C08-S05 Beachtown 2 Bedroom Apartment",
       "slug": "c08-s05-beachtown-2-bedroom-apartment",
-      "availableCount": 178,
-      "blockedCount": 35,
+      "availableCount": 179,
+      "blockedCount": 34,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:28:33.700Z"
+      "updatedAt": "2026-07-21T22:13:15.365Z"
     },
     {
       "wp": 91036,
       "title": "D01-G07 Beachtown 2 Bedroom Apartment",
       "slug": "d01-g07-beachtown-2-bedroom-apartment",
-      "availableCount": 183,
-      "blockedCount": 30,
+      "availableCount": 184,
+      "blockedCount": 29,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:28:52.408Z"
+      "updatedAt": "2026-07-21T22:13:34.065Z"
     },
     {
       "wp": 91037,
       "title": "B09-S03 Beachtown 2 Bedroom Apartment",
       "slug": "b09-s03-beachtown-2-bedroom-apartment",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:29:11.221Z"
+      "updatedAt": "2026-07-21T22:13:52.724Z"
     },
     {
       "wp": 91038,
@@ -342,16 +342,16 @@
       "availableCount": 204,
       "blockedCount": 9,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:29:30.043Z"
+      "updatedAt": "2026-07-21T22:14:11.408Z"
     },
     {
       "wp": 91039,
       "title": "C01-S08 Beachtown 2 Bedroom Apartment",
       "slug": "c01-s08-beachtown-2-bedroom-apartment",
-      "availableCount": 178,
-      "blockedCount": 35,
+      "availableCount": 179,
+      "blockedCount": 34,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:29:48.796Z"
+      "updatedAt": "2026-07-21T22:14:30.100Z"
     },
     {
       "wp": 91040,
@@ -360,7 +360,7 @@
       "availableCount": 172,
       "blockedCount": 41,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:30:07.506Z"
+      "updatedAt": "2026-07-21T22:14:48.851Z"
     },
     {
       "wp": 91041,
@@ -369,7 +369,7 @@
       "availableCount": 193,
       "blockedCount": 20,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:30:26.172Z"
+      "updatedAt": "2026-07-21T22:15:07.598Z"
     },
     {
       "wp": 91042,
@@ -378,7 +378,7 @@
       "availableCount": 176,
       "blockedCount": 37,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:30:44.846Z"
+      "updatedAt": "2026-07-21T22:15:26.295Z"
     },
     {
       "wp": 91043,
@@ -387,34 +387,34 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:31:03.627Z"
+      "updatedAt": "2026-07-21T22:15:44.961Z"
     },
     {
       "wp": 91044,
       "title": "D01-S13 Beachtown 2 Bedroom Apartment",
       "slug": "d01-s13-beachtown-2-bedroom-apartment",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:31:22.318Z"
+      "updatedAt": "2026-07-21T22:16:03.627Z"
     },
     {
       "wp": 91045,
       "title": "C02-F07 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "c02-f07-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:31:41.026Z"
+      "updatedAt": "2026-07-21T22:16:22.273Z"
     },
     {
       "wp": 91046,
       "title": "F11 Beachtown 4 Bedroom + Maid's Room Townvilla",
       "slug": "f11-beachtown-4-bedroom-maids-room-townvilla",
-      "availableCount": 175,
-      "blockedCount": 38,
+      "availableCount": 176,
+      "blockedCount": 37,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:31:59.734Z"
+      "updatedAt": "2026-07-21T22:16:40.934Z"
     },
     {
       "wp": 91047,
@@ -423,7 +423,7 @@
       "availableCount": 186,
       "blockedCount": 27,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:32:18.411Z"
+      "updatedAt": "2026-07-21T22:16:59.599Z"
     },
     {
       "wp": 91048,
@@ -432,34 +432,34 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:32:37.118Z"
+      "updatedAt": "2026-07-21T22:17:18.398Z"
     },
     {
       "wp": 91049,
       "title": "D01-S11 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "d01-s11-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:32:55.759Z"
+      "updatedAt": "2026-07-21T22:17:37.079Z"
     },
     {
       "wp": 91050,
       "title": "D02-G04 Beachtown 2 Bedroom Apartment",
       "slug": "d02-g04-beachtown-2-bedroom-apartment",
-      "availableCount": 190,
-      "blockedCount": 23,
+      "availableCount": 191,
+      "blockedCount": 22,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:33:14.448Z"
+      "updatedAt": "2026-07-21T22:17:55.862Z"
     },
     {
       "wp": 91051,
       "title": "C02-F03 Beachtown 2 Bedroom Apartment",
       "slug": "c02-f03-beachtown-2-bedroom-apartment",
-      "availableCount": 187,
-      "blockedCount": 26,
+      "availableCount": 188,
+      "blockedCount": 25,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:33:33.142Z"
+      "updatedAt": "2026-07-21T22:18:14.549Z"
     },
     {
       "wp": 91052,
@@ -468,43 +468,43 @@
       "availableCount": 179,
       "blockedCount": 34,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:33:51.805Z"
+      "updatedAt": "2026-07-21T22:18:33.210Z"
     },
     {
       "wp": 91053,
       "title": "D02-F03 Beachtown 2 Bedroom Apartment",
       "slug": "d02-f03-beachtown-2-bedroom-apartment",
-      "availableCount": 178,
-      "blockedCount": 35,
+      "availableCount": 179,
+      "blockedCount": 34,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:34:10.483Z"
+      "updatedAt": "2026-07-21T22:18:51.923Z"
     },
     {
       "wp": 91054,
       "title": "E02-S08 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "e02-s08-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:34:29.158Z"
+      "updatedAt": "2026-07-21T22:19:10.700Z"
     },
     {
       "wp": 91055,
       "title": "E01-F06 Beachtown 2 Bedroom Apartment",
       "slug": "e01-f06-beachtown-2-bedroom-apartment",
-      "availableCount": 172,
-      "blockedCount": 41,
+      "availableCount": 173,
+      "blockedCount": 40,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:34:47.799Z"
+      "updatedAt": "2026-07-21T22:19:29.400Z"
     },
     {
       "wp": 91056,
       "title": "B01-G04 Beachtown 2 Bedroom Apartment",
       "slug": "b01-g04-beachtown-2-bedroom-apartment",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:35:06.484Z"
+      "updatedAt": "2026-07-21T22:19:48.115Z"
     },
     {
       "wp": 91057,
@@ -513,25 +513,25 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:35:25.234Z"
+      "updatedAt": "2026-07-21T22:20:06.854Z"
     },
     {
       "wp": 91058,
       "title": "B02-G01 Beachtown 2 Bedroom + Maid’s Room Apartment",
       "slug": "b02-g01-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 178,
-      "blockedCount": 35,
+      "availableCount": 179,
+      "blockedCount": 34,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:35:43.916Z"
+      "updatedAt": "2026-07-21T22:20:25.584Z"
     },
     {
       "wp": 91059,
       "title": "C08-S03 Beachtown 2 Bedroom Apartment",
       "slug": "c08-s03-beachtown-2-bedroom-apartment",
-      "availableCount": 184,
-      "blockedCount": 29,
+      "availableCount": 185,
+      "blockedCount": 28,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:36:02.607Z"
+      "updatedAt": "2026-07-21T22:20:44.301Z"
     },
     {
       "wp": 91060,
@@ -540,43 +540,43 @@
       "availableCount": 194,
       "blockedCount": 19,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:36:21.273Z"
+      "updatedAt": "2026-07-21T22:21:03.097Z"
     },
     {
       "wp": 91061,
       "title": "E06-F04 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "e06-f04-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:36:39.951Z"
+      "updatedAt": "2026-07-21T22:21:21.749Z"
     },
     {
       "wp": 91062,
       "title": "C01-S01 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "c01-s01-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 6,
-      "updatedAt": "2026-07-21T19:36:58.630Z"
+      "updatedAt": "2026-07-21T22:21:40.413Z"
     },
     {
       "wp": 91063,
       "title": "B01-F04 Beachtown 2 Bedroom Aprtament",
       "slug": "b01-f04-beachtown-2-bedroom-aprtament",
-      "availableCount": 191,
-      "blockedCount": 22,
+      "availableCount": 192,
+      "blockedCount": 21,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:37:17.310Z"
+      "updatedAt": "2026-07-21T22:21:59.169Z"
     },
     {
       "wp": 91064,
       "title": "F01-S03 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "f01-s03-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 173,
-      "blockedCount": 40,
+      "availableCount": 174,
+      "blockedCount": 39,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:37:36.250Z"
+      "updatedAt": "2026-07-21T22:22:17.859Z"
     },
     {
       "wp": 91065,
@@ -585,16 +585,16 @@
       "availableCount": 175,
       "blockedCount": 38,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:37:54.902Z"
+      "updatedAt": "2026-07-21T22:22:36.588Z"
     },
     {
       "wp": 91066,
       "title": "B01-F01 Beachtown 2 Bedroom Apartment",
       "slug": "b01-f01-beachtown-2-bedroom-apartment",
-      "availableCount": 184,
-      "blockedCount": 29,
+      "availableCount": 185,
+      "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:38:13.611Z"
+      "updatedAt": "2026-07-21T22:22:55.303Z"
     },
     {
       "wp": 91067,
@@ -603,7 +603,7 @@
       "availableCount": 172,
       "blockedCount": 41,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:38:32.274Z"
+      "updatedAt": "2026-07-21T22:23:13.970Z"
     },
     {
       "wp": 91068,
@@ -612,16 +612,16 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:38:51.030Z"
+      "updatedAt": "2026-07-21T22:23:32.846Z"
     },
     {
       "wp": 91069,
       "title": "B09-S04 Beachtown 2 Bedroom Aprtament",
       "slug": "b09-s04-beachtown-2-bedroom-aprtament",
-      "availableCount": 188,
-      "blockedCount": 25,
+      "availableCount": 189,
+      "blockedCount": 24,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:39:09.730Z"
+      "updatedAt": "2026-07-21T22:23:51.570Z"
     },
     {
       "wp": 91070,
@@ -630,52 +630,52 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:39:28.463Z"
+      "updatedAt": "2026-07-21T22:24:10.258Z"
     },
     {
       "wp": 91071,
       "title": "F10-G Residences 3 Bedroom + Maid's Room Chalet",
       "slug": "f10-g-residences-3-bedroom-maids-room-chalet",
-      "availableCount": 186,
-      "blockedCount": 27,
+      "availableCount": 187,
+      "blockedCount": 26,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:39:47.261Z"
+      "updatedAt": "2026-07-21T22:24:29.153Z"
     },
     {
       "wp": 91072,
       "title": "C01-G01 Beachtown 2 Bedroom + Maid’s Room Apartment",
       "slug": "c01-g01-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:40:05.904Z"
+      "updatedAt": "2026-07-21T22:24:47.974Z"
     },
     {
       "wp": 91073,
       "title": "E05 Beachtown 4 Bedroom + Maid's Room Townvilla",
       "slug": "e05-beachtown-4-bedroom-maids-room-townvilla",
-      "availableCount": 181,
-      "blockedCount": 32,
+      "availableCount": 182,
+      "blockedCount": 31,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:40:24.629Z"
+      "updatedAt": "2026-07-21T22:25:06.649Z"
     },
     {
       "wp": 91074,
       "title": "F05-G Residences 3 Bedroom + Maid's Room Chalet",
       "slug": "f05-g-residences-3-bedroom-maids-room-chalet",
-      "availableCount": 141,
-      "blockedCount": 72,
+      "availableCount": 142,
+      "blockedCount": 71,
       "minStay": 6,
-      "updatedAt": "2026-07-21T19:40:43.325Z"
+      "updatedAt": "2026-07-21T22:25:25.323Z"
     },
     {
       "wp": 91075,
       "title": "D22-F Challet 3 Bedrooms + Maid's Room First Floor",
       "slug": "d22-f-challet-3-bedrooms-maids-room-first-floor",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:41:01.982Z"
+      "updatedAt": "2026-07-21T22:25:44.059Z"
     },
     {
       "wp": 91076,
@@ -684,7 +684,7 @@
       "availableCount": 177,
       "blockedCount": 36,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:41:20.691Z"
+      "updatedAt": "2026-07-21T22:26:02.848Z"
     },
     {
       "wp": 91077,
@@ -693,7 +693,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:41:39.389Z"
+      "updatedAt": "2026-07-21T22:26:21.544Z"
     },
     {
       "wp": 91078,
@@ -702,34 +702,34 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:41:58.125Z"
+      "updatedAt": "2026-07-21T22:26:40.267Z"
     },
     {
       "wp": 91079,
       "title": "E19-F Residences 4 Bedroom Chalet",
       "slug": "e19-f-residences-4-bedroom-chalet",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:42:16.853Z"
+      "updatedAt": "2026-07-21T22:26:58.930Z"
     },
     {
       "wp": 91080,
       "title": "39B Bayhomes 4 Bedroom + Maid's room",
       "slug": "39b-bayhomes-4-bedroom-maids-room",
-      "availableCount": 181,
-      "blockedCount": 32,
+      "availableCount": 182,
+      "blockedCount": 31,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:42:35.588Z"
+      "updatedAt": "2026-07-21T22:27:17.668Z"
     },
     {
       "wp": 91081,
       "title": "D01-F Residences 3 Bedroom Chalet",
       "slug": "d01-f-residences-3-bedroom-chalet",
-      "availableCount": 184,
-      "blockedCount": 29,
+      "availableCount": 185,
+      "blockedCount": 28,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:42:54.263Z"
+      "updatedAt": "2026-07-21T22:27:36.331Z"
     },
     {
       "wp": 91082,
@@ -738,7 +738,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:43:12.950Z"
+      "updatedAt": "2026-07-21T22:27:54.986Z"
     },
     {
       "wp": 91083,
@@ -747,7 +747,7 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 5,
-      "updatedAt": "2026-07-21T19:43:31.613Z"
+      "updatedAt": "2026-07-21T22:28:13.672Z"
     },
     {
       "wp": 91084,
@@ -756,25 +756,25 @@
       "availableCount": 176,
       "blockedCount": 37,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:43:50.266Z"
+      "updatedAt": "2026-07-21T22:28:32.343Z"
     },
     {
       "wp": 91085,
       "title": "E09 Beachtown 3 Bedroom + Maid's Room Townhome",
       "slug": "e09-beachtown-3-bedroom-maids-room-townhome",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:44:08.939Z"
+      "updatedAt": "2026-07-21T22:28:50.996Z"
     },
     {
       "wp": 91086,
       "title": "E22 Beachtown 7 Bedroom + Maid's Room Townvilla",
       "slug": "e22-beachtown-7-bedroom-maids-room-townvilla",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 14,
-      "updatedAt": "2026-07-21T19:44:27.624Z"
+      "updatedAt": "2026-07-21T22:29:09.659Z"
     },
     {
       "wp": 91087,
@@ -783,7 +783,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:44:46.264Z"
+      "updatedAt": "2026-07-21T22:29:28.321Z"
     },
     {
       "wp": 91088,
@@ -792,34 +792,34 @@
       "availableCount": 213,
       "blockedCount": 0,
       "minStay": 4,
-      "updatedAt": "2026-07-21T19:45:04.923Z"
+      "updatedAt": "2026-07-21T22:29:46.957Z"
     },
     {
       "wp": 91089,
       "title": "F15-F Residences 5 Bedroom + Maids Room Chalet with Pool",
       "slug": "f15-f-residences-5-bedroom-maids-room-chalet-with-pool",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 3,
-      "updatedAt": "2026-07-21T19:45:23.599Z"
+      "updatedAt": "2026-07-21T22:30:05.636Z"
     },
     {
       "wp": 91090,
       "title": "C55 Selection 5 Bedroom Standalone Villa",
       "slug": "c55-selection-5-bedroom-standalone-villa",
-      "availableCount": 186,
-      "blockedCount": 27,
+      "availableCount": 187,
+      "blockedCount": 26,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:45:42.500Z"
+      "updatedAt": "2026-07-21T22:30:24.344Z"
     },
     {
       "wp": 91091,
       "title": "G67 Selection 5 Bedroom Town Villa",
       "slug": "g67-selection-5-bedroom-town-villa",
-      "availableCount": 193,
-      "blockedCount": 20,
+      "availableCount": 194,
+      "blockedCount": 19,
       "minStay": 6,
-      "updatedAt": "2026-07-21T19:46:01.292Z"
+      "updatedAt": "2026-07-21T22:30:43.009Z"
     },
     {
       "wp": 91092,
@@ -828,16 +828,16 @@
       "availableCount": 196,
       "blockedCount": 17,
       "minStay": 14,
-      "updatedAt": "2026-07-21T19:46:20.112Z"
+      "updatedAt": "2026-07-21T22:31:01.687Z"
     },
     {
       "wp": 91093,
       "title": "C03-F01 Beachtown 2 Bedroom Apartment",
       "slug": "c03-f01-beachtown-2-bedroom-apartment",
-      "availableCount": 173,
-      "blockedCount": 40,
+      "availableCount": 174,
+      "blockedCount": 39,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:46:38.881Z"
+      "updatedAt": "2026-07-21T22:31:20.387Z"
     },
     {
       "wp": 91094,
@@ -846,16 +846,16 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:46:57.562Z"
+      "updatedAt": "2026-07-21T22:31:39.034Z"
     },
     {
       "wp": 91095,
       "title": "E02-S03 Beachtown 2 Bedroom Apartment",
       "slug": "e02-s03-beachtown-2-bedroom-apartment",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:47:16.264Z"
+      "updatedAt": "2026-07-21T22:31:57.665Z"
     },
     {
       "wp": 91096,
@@ -864,7 +864,7 @@
       "availableCount": 202,
       "blockedCount": 11,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:47:34.917Z"
+      "updatedAt": "2026-07-21T22:32:16.334Z"
     },
     {
       "wp": 91097,
@@ -873,7 +873,7 @@
       "availableCount": 177,
       "blockedCount": 36,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:47:53.624Z"
+      "updatedAt": "2026-07-21T22:32:35.010Z"
     },
     {
       "wp": 91098,
@@ -882,16 +882,16 @@
       "availableCount": 175,
       "blockedCount": 38,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:48:12.281Z"
+      "updatedAt": "2026-07-21T22:32:53.858Z"
     },
     {
       "wp": 91099,
       "title": "D01-F10 Beachtown 2 Bedroom Apartment",
       "slug": "d01-f10-beachtown-2-bedroom-apartment",
-      "availableCount": 173,
-      "blockedCount": 40,
+      "availableCount": 174,
+      "blockedCount": 39,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:48:31.037Z"
+      "updatedAt": "2026-07-21T22:33:12.517Z"
     },
     {
       "wp": 91100,
@@ -900,16 +900,16 @@
       "availableCount": 176,
       "blockedCount": 37,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:48:49.818Z"
+      "updatedAt": "2026-07-21T22:33:31.169Z"
     },
     {
       "wp": 91101,
       "title": "B02-F04 Beachtown 2 Bedroom Apartment",
       "slug": "b02-f04-beachtown-2-bedroom-apartment",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:49:08.504Z"
+      "updatedAt": "2026-07-21T22:33:49.817Z"
     },
     {
       "wp": 91102,
@@ -918,16 +918,16 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:49:27.186Z"
+      "updatedAt": "2026-07-21T22:34:08.462Z"
     },
     {
       "wp": 91103,
       "title": "D08-S02 Beachtown 2 Bedroom Apartment",
       "slug": "d08-s02-beachtown-2-bedroom-apartment",
-      "availableCount": 172,
-      "blockedCount": 41,
+      "availableCount": 173,
+      "blockedCount": 40,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:49:45.877Z"
+      "updatedAt": "2026-07-21T22:34:27.230Z"
     },
     {
       "wp": 91104,
@@ -936,7 +936,7 @@
       "availableCount": 186,
       "blockedCount": 27,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:50:04.520Z"
+      "updatedAt": "2026-07-21T22:34:45.902Z"
     },
     {
       "wp": 91105,
@@ -945,43 +945,43 @@
       "availableCount": 180,
       "blockedCount": 33,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:50:23.234Z"
+      "updatedAt": "2026-07-21T22:35:04.571Z"
     },
     {
       "wp": 91106,
       "title": "C02-S02 Beachtown 2 Bedroom Apartment",
       "slug": "c02-s02-beachtown-2-bedroom-apartment",
-      "availableCount": 184,
-      "blockedCount": 29,
+      "availableCount": 185,
+      "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:50:41.900Z"
+      "updatedAt": "2026-07-21T22:35:23.292Z"
     },
     {
       "wp": 91107,
       "title": "D08-F02 Beachtown 2 Bedroom Apartment",
       "slug": "d08-f02-beachtown-2-bedroom-apartment",
-      "availableCount": 141,
-      "blockedCount": 72,
+      "availableCount": 142,
+      "blockedCount": 71,
       "minStay": 20,
-      "updatedAt": "2026-07-21T19:51:00.545Z"
+      "updatedAt": "2026-07-21T22:35:41.969Z"
     },
     {
       "wp": 91108,
       "title": "E01-S05 Beachtown 2 Bedroom Apartment",
       "slug": "e01-s05-beachtown-2-bedroom-apartment",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:51:19.249Z"
+      "updatedAt": "2026-07-21T22:36:00.615Z"
     },
     {
       "wp": 91109,
       "title": "E02-S05 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "e02-s05-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 188,
-      "blockedCount": 25,
+      "availableCount": 189,
+      "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:51:37.943Z"
+      "updatedAt": "2026-07-21T22:36:19.312Z"
     },
     {
       "wp": 91110,
@@ -990,7 +990,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:51:56.634Z"
+      "updatedAt": "2026-07-21T22:36:38.026Z"
     },
     {
       "wp": 91111,
@@ -999,7 +999,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:52:15.349Z"
+      "updatedAt": "2026-07-21T22:36:56.705Z"
     },
     {
       "wp": 91112,
@@ -1008,7 +1008,7 @@
       "availableCount": 173,
       "blockedCount": 40,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:52:34.092Z"
+      "updatedAt": "2026-07-21T22:37:15.364Z"
     },
     {
       "wp": 91113,
@@ -1017,7 +1017,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:52:52.865Z"
+      "updatedAt": "2026-07-21T22:37:34.023Z"
     },
     {
       "wp": 91114,
@@ -1026,25 +1026,25 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:53:11.578Z"
+      "updatedAt": "2026-07-21T22:37:52.655Z"
     },
     {
       "wp": 91115,
       "title": "E02-G08 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "e02-g08-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 173,
-      "blockedCount": 40,
+      "availableCount": 174,
+      "blockedCount": 39,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:53:30.230Z"
+      "updatedAt": "2026-07-21T22:38:11.312Z"
     },
     {
       "wp": 91116,
       "title": "E06-G02 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "e06-g02-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 173,
-      "blockedCount": 40,
+      "availableCount": 174,
+      "blockedCount": 39,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:53:48.955Z"
+      "updatedAt": "2026-07-21T22:38:29.961Z"
     },
     {
       "wp": 91117,
@@ -1053,7 +1053,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:54:07.648Z"
+      "updatedAt": "2026-07-21T22:38:48.612Z"
     },
     {
       "wp": 91118,
@@ -1062,52 +1062,52 @@
       "availableCount": 180,
       "blockedCount": 33,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:54:26.307Z"
+      "updatedAt": "2026-07-21T22:39:07.274Z"
     },
     {
       "wp": 91119,
       "title": "E06-S04 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "e06-s04-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 181,
-      "blockedCount": 32,
+      "availableCount": 182,
+      "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:54:44.966Z"
+      "updatedAt": "2026-07-21T22:39:25.973Z"
     },
     {
       "wp": 91120,
       "title": "F01-S07 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "f01-s07-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 175,
-      "blockedCount": 38,
+      "availableCount": 176,
+      "blockedCount": 37,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:55:03.666Z"
+      "updatedAt": "2026-07-21T22:39:44.665Z"
     },
     {
       "wp": 91121,
       "title": "B09-F05 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "b09-f05-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 189,
-      "blockedCount": 24,
+      "availableCount": 190,
+      "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:55:22.391Z"
+      "updatedAt": "2026-07-21T22:40:03.313Z"
     },
     {
       "wp": 91122,
       "title": "F02-G03 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "f02-g03-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 184,
-      "blockedCount": 29,
+      "availableCount": 185,
+      "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:55:41.047Z"
+      "updatedAt": "2026-07-21T22:40:21.971Z"
     },
     {
       "wp": 91123,
       "title": "F02-F01 Beachtown 2 Bedrooms + Maid's Room Apartment",
       "slug": "f02-f01-beachtown-2-bedrooms-maids-room-apartment",
-      "availableCount": 187,
-      "blockedCount": 26,
+      "availableCount": 188,
+      "blockedCount": 25,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:55:59.773Z"
+      "updatedAt": "2026-07-21T22:40:40.658Z"
     },
     {
       "wp": 91124,
@@ -1116,7 +1116,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:56:18.435Z"
+      "updatedAt": "2026-07-21T22:40:59.314Z"
     },
     {
       "wp": 91125,
@@ -1125,7 +1125,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:56:37.065Z"
+      "updatedAt": "2026-07-21T22:41:18.008Z"
     },
     {
       "wp": 91126,
@@ -1134,25 +1134,25 @@
       "availableCount": 205,
       "blockedCount": 8,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:56:55.772Z"
+      "updatedAt": "2026-07-21T22:41:36.654Z"
     },
     {
       "wp": 91127,
       "title": "E10 Beachtown 3 Bedroom + Maid's Room Townhome",
       "slug": "e10-beachtown-3-bedroom-maids-room-townhome",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:57:14.422Z"
+      "updatedAt": "2026-07-21T22:41:55.317Z"
     },
     {
       "wp": 91128,
       "title": "E09-G Residences 3 Bedroom + Maid's chalet",
       "slug": "e09-g-residences-3-bedroom-maids-chalet",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:57:33.082Z"
+      "updatedAt": "2026-07-21T22:42:13.976Z"
     },
     {
       "wp": 91129,
@@ -1161,7 +1161,7 @@
       "availableCount": 186,
       "blockedCount": 27,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:57:51.742Z"
+      "updatedAt": "2026-07-21T22:42:32.889Z"
     },
     {
       "wp": 91130,
@@ -1170,16 +1170,16 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:58:10.855Z"
+      "updatedAt": "2026-07-21T22:42:51.627Z"
     },
     {
       "wp": 91131,
       "title": "67A Bayhomes 3 Bedroom + Maid's Room Quad chalet",
       "slug": "67a-bayhomes-3-bedroom-maids-room-quad-chalet",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:58:29.538Z"
+      "updatedAt": "2026-07-21T22:43:10.331Z"
     },
     {
       "wp": 91132,
@@ -1188,25 +1188,25 @@
       "availableCount": 173,
       "blockedCount": 40,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:58:48.189Z"
+      "updatedAt": "2026-07-21T22:43:29.130Z"
     },
     {
       "wp": 91133,
       "title": "D21-G Residences 3 Bedroom Chalet",
       "slug": "d21-g-residences-3-bedroom-chalet",
-      "availableCount": 188,
-      "blockedCount": 25,
+      "availableCount": 189,
+      "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:59:06.827Z"
+      "updatedAt": "2026-07-21T22:43:47.821Z"
     },
     {
       "wp": 91134,
       "title": "C01-F07 Beachtown 2 Bedroom + Maid's Room Apartment",
       "slug": "c01-f07-beachtown-2-bedroom-maids-room-apartment",
-      "availableCount": 172,
-      "blockedCount": 41,
+      "availableCount": 173,
+      "blockedCount": 40,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:59:25.440Z"
+      "updatedAt": "2026-07-21T22:44:06.500Z"
     },
     {
       "wp": 91135,
@@ -1215,43 +1215,43 @@
       "availableCount": 173,
       "blockedCount": 40,
       "minStay": 7,
-      "updatedAt": "2026-07-21T19:59:44.095Z"
+      "updatedAt": "2026-07-21T22:44:25.223Z"
     },
     {
       "wp": 91136,
       "title": "E32-F Residences 3 Bedroom + Maid's Room Chalet",
       "slug": "e32-f-residences-3-bedroom-maids-room-chalet",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:00:02.957Z"
+      "updatedAt": "2026-07-21T22:44:43.951Z"
     },
     {
       "wp": 91137,
       "title": "C17 Beachtown 3 Bedroom + Maid's Room Townhome",
       "slug": "c17-beachtown-3-bedroom-maids-room-townhome",
-      "availableCount": 196,
-      "blockedCount": 17,
+      "availableCount": 197,
+      "blockedCount": 16,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:00:21.775Z"
+      "updatedAt": "2026-07-21T22:45:02.634Z"
     },
     {
       "wp": 91138,
       "title": "38A Bayhomes 4 Bedroom + Maid's Room Twin Home",
       "slug": "38a-bayhomes-4-bedroom-maids-room-twin-home",
-      "availableCount": 180,
-      "blockedCount": 33,
+      "availableCount": 181,
+      "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:00:40.552Z"
+      "updatedAt": "2026-07-21T22:45:21.340Z"
     },
     {
       "wp": 91139,
       "title": "C07 Beachtown 4 Bedroom + Maid's Room Townvilla",
       "slug": "c07-beachtown-4-bedroom-maids-room-townvilla",
-      "availableCount": 181,
-      "blockedCount": 32,
+      "availableCount": 182,
+      "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:00:59.259Z"
+      "updatedAt": "2026-07-21T22:45:40.099Z"
     },
     {
       "wp": 91140,
@@ -1260,7 +1260,7 @@
       "availableCount": 176,
       "blockedCount": 37,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:01:17.896Z"
+      "updatedAt": "2026-07-21T22:45:58.825Z"
     },
     {
       "wp": 91141,
@@ -1269,16 +1269,16 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:01:36.576Z"
+      "updatedAt": "2026-07-21T22:46:17.590Z"
     },
     {
       "wp": 91142,
       "title": "G30 Selection 6 Bedroom + Maid's Room Standalone Villa",
       "slug": "g30-selection-6-bedroom-maids-room-standalone-villa",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:01:55.273Z"
+      "updatedAt": "2026-07-21T22:46:36.253Z"
     },
     {
       "wp": 91143,
@@ -1287,61 +1287,61 @@
       "availableCount": 179,
       "blockedCount": 34,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:02:14.053Z"
+      "updatedAt": "2026-07-21T22:46:54.924Z"
     },
     {
       "wp": 91144,
       "title": "F33-F Residences 4 Bedroom + Maid's Room Chalet",
       "slug": "f33-f-residences-4-bedroom-maids-room-chalet",
-      "availableCount": 177,
-      "blockedCount": 36,
+      "availableCount": 178,
+      "blockedCount": 35,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:02:32.729Z"
+      "updatedAt": "2026-07-21T22:47:13.702Z"
     },
     {
       "wp": 91145,
       "title": "F34-F Residences 4 Bedroom + Maid's Room Chalet",
       "slug": "f34-f-residences-4-bedroom-maids-room-chalet",
-      "availableCount": 175,
-      "blockedCount": 38,
+      "availableCount": 176,
+      "blockedCount": 37,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:02:51.387Z"
+      "updatedAt": "2026-07-21T22:47:32.563Z"
     },
     {
       "wp": 91146,
       "title": "19B Bayhomes 4 Bedroom + Maid's Room+ Driver's Room Chalet",
       "slug": "19b-bayhomes-4-bedroom-maids-room-drivers-room-chalet",
-      "availableCount": 182,
-      "blockedCount": 31,
+      "availableCount": 183,
+      "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:03:10.037Z"
+      "updatedAt": "2026-07-21T22:47:51.248Z"
     },
     {
       "wp": 91147,
       "title": "E40 Residence 5 Bedroom + Maid's Room + Driver's Room villa",
       "slug": "e40-residence-5-bedroom-maids-room-drivers-room-villa",
-      "availableCount": 171,
-      "blockedCount": 42,
+      "availableCount": 172,
+      "blockedCount": 41,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:03:28.755Z"
+      "updatedAt": "2026-07-21T22:48:10.005Z"
     },
     {
       "wp": 91148,
       "title": "G06 Selection 6 Bedroom Town Villa",
       "slug": "g06-selection-6-bedroom-town-villa",
-      "availableCount": 194,
-      "blockedCount": 19,
+      "availableCount": 195,
+      "blockedCount": 18,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:03:47.527Z"
+      "updatedAt": "2026-07-21T22:48:28.637Z"
     },
     {
       "wp": 91149,
       "title": "47A Bayhomes 4 Bedroom + Maid's Room+ Driver's Room Chalet",
       "slug": "47a-bayhomes-4-bedroom-maids-room-drivers-room-chalet",
-      "availableCount": 187,
-      "blockedCount": 26,
+      "availableCount": 188,
+      "blockedCount": 25,
       "minStay": 10,
-      "updatedAt": "2026-07-21T20:04:06.265Z"
+      "updatedAt": "2026-07-21T22:48:47.294Z"
     },
     {
       "wp": 91150,
@@ -1350,16 +1350,16 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:04:24.940Z"
+      "updatedAt": "2026-07-21T22:49:06.013Z"
     },
     {
       "wp": 91151,
       "title": "D76 Selection 5 Bedroom Standalone Villa",
       "slug": "d76-selection-5-bedroom-standalone-villa",
-      "availableCount": 202,
-      "blockedCount": 11,
+      "availableCount": 203,
+      "blockedCount": 10,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:04:43.594Z"
+      "updatedAt": "2026-07-21T22:49:24.666Z"
     },
     {
       "wp": 91152,
@@ -1368,7 +1368,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-21T20:05:02.215Z"
+      "updatedAt": "2026-07-21T22:49:43.441Z"
     }
   ]
 }
