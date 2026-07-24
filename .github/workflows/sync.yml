@@ -40,5 +40,14 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
-          git diff --staged --quiet || git commit -m "chore: refresh Almaza iCal feeds"
-          git push
+          if git diff --staged --quiet; then echo "No feed change."; exit 0; fi
+          git commit -m "chore: refresh Almaza iCal feeds"
+          # Robust push: this run is ~48min and the price watch commits
+          # state/prices.json in the same window, so main can move under us.
+          for i in 1 2 3 4 5; do
+            git push && { echo "Pushed (attempt $i)."; exit 0; }
+            echo "Push rejected; integrating remote and retrying ($i)..."
+            git fetch origin main
+            git merge -X ours --no-edit origin/main || true
+          done
+          echo "ERROR: push failed after 5 attempts"; exit 1

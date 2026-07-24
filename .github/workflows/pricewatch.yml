@@ -70,5 +70,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add state/prices.json data/roster.json
-          git diff --staged --quiet || git commit -m "chore: update Almaza price baseline"
-          git push
+          if git diff --staged --quiet; then echo "No baseline change."; exit 0; fi
+          git commit -m "chore: update Almaza price baseline"
+          # Robust push (same pattern as brassbell-ical): this run takes ~12min and
+          # the Sync Almaza availability run commits docs/*.ics in the same window,
+          # so main routinely moves under us. Losing the push means the baseline is
+          # never written and the SAME price change re-alerts every morning.
+          for i in 1 2 3 4 5; do
+            git push && { echo "Pushed (attempt $i)."; exit 0; }
+            echo "Push rejected; integrating remote and retrying ($i)..."
+            git fetch origin main
+            git merge -X ours --no-edit origin/main || true
+          done
+          echo "ERROR: push failed after 5 attempts"; exit 1
