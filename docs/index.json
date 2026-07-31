@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T17:32:10.147Z",
+  "updatedAt": "2026-07-31T20:07:33.721Z",
   "skipped": [],
   "properties": [
     {
@@ -9,7 +9,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:45:19.421Z"
+      "updatedAt": "2026-07-31T19:20:48.944Z"
     },
     {
       "wp": 91002,
@@ -18,7 +18,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:45:38.082Z"
+      "updatedAt": "2026-07-31T19:21:07.464Z"
     },
     {
       "wp": 91003,
@@ -27,7 +27,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:45:56.629Z"
+      "updatedAt": "2026-07-31T19:21:26.158Z"
     },
     {
       "wp": 91004,
@@ -36,7 +36,7 @@
       "availableCount": 187,
       "blockedCount": 26,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:46:15.177Z"
+      "updatedAt": "2026-07-31T19:21:44.748Z"
     },
     {
       "wp": 91005,
@@ -45,7 +45,7 @@
       "availableCount": 177,
       "blockedCount": 36,
       "minStay": 5,
-      "updatedAt": "2026-07-31T16:46:33.741Z"
+      "updatedAt": "2026-07-31T19:22:03.359Z"
     },
     {
       "wp": 91006,
@@ -54,7 +54,7 @@
       "availableCount": 188,
       "blockedCount": 25,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:46:52.273Z"
+      "updatedAt": "2026-07-31T19:22:22.016Z"
     },
     {
       "wp": 91007,
@@ -63,7 +63,7 @@
       "availableCount": 188,
       "blockedCount": 25,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:47:10.857Z"
+      "updatedAt": "2026-07-31T19:22:40.619Z"
     },
     {
       "wp": 91008,
@@ -72,7 +72,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:47:29.468Z"
+      "updatedAt": "2026-07-31T19:22:59.177Z"
     },
     {
       "wp": 91009,
@@ -81,7 +81,7 @@
       "availableCount": 180,
       "blockedCount": 33,
       "minStay": 5,
-      "updatedAt": "2026-07-31T16:47:48.025Z"
+      "updatedAt": "2026-07-31T19:23:17.885Z"
     },
     {
       "wp": 91010,
@@ -90,7 +90,7 @@
       "availableCount": 187,
       "blockedCount": 26,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:48:06.566Z"
+      "updatedAt": "2026-07-31T19:23:36.547Z"
     },
     {
       "wp": 91011,
@@ -99,7 +99,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:48:25.162Z"
+      "updatedAt": "2026-07-31T19:23:55.113Z"
     },
     {
       "wp": 91012,
@@ -108,7 +108,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:48:43.678Z"
+      "updatedAt": "2026-07-31T19:24:13.661Z"
     },
     {
       "wp": 91013,
@@ -117,7 +117,7 @@
       "availableCount": 186,
       "blockedCount": 27,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:49:02.278Z"
+      "updatedAt": "2026-07-31T19:24:32.239Z"
     },
     {
       "wp": 91014,
@@ -126,7 +126,7 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:49:20.878Z"
+      "updatedAt": "2026-07-31T19:24:50.717Z"
     },
     {
       "wp": 91015,
@@ -135,7 +135,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:49:39.402Z"
+      "updatedAt": "2026-07-31T19:25:09.245Z"
     },
     {
       "wp": 91016,
@@ -144,7 +144,7 @@
       "availableCount": 193,
       "blockedCount": 20,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:49:58.230Z"
+      "updatedAt": "2026-07-31T19:25:27.770Z"
     },
     {
       "wp": 91017,
@@ -153,7 +153,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:50:16.806Z"
+      "updatedAt": "2026-07-31T19:25:46.272Z"
     },
     {
       "wp": 91018,
@@ -162,7 +162,7 @@
       "availableCount": 193,
       "blockedCount": 20,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:50:35.338Z"
+      "updatedAt": "2026-07-31T19:26:04.749Z"
     },
     {
       "wp": 91019,
@@ -171,7 +171,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:50:53.935Z"
+      "updatedAt": "2026-07-31T19:26:23.306Z"
     },
     {
       "wp": 91020,
@@ -180,7 +180,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:51:12.523Z"
+      "updatedAt": "2026-07-31T19:26:41.797Z"
     },
     {
       "wp": 91021,
@@ -189,7 +189,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:51:31.381Z"
+      "updatedAt": "2026-07-31T19:27:00.310Z"
     },
     {
       "wp": 91022,
@@ -198,7 +198,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:51:49.960Z"
+      "updatedAt": "2026-07-31T19:27:18.886Z"
     },
     {
       "wp": 91023,
@@ -207,7 +207,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:52:08.614Z"
+      "updatedAt": "2026-07-31T19:27:37.427Z"
     },
     {
       "wp": 91024,
@@ -216,7 +216,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:52:27.194Z"
+      "updatedAt": "2026-07-31T19:27:56.006Z"
     },
     {
       "wp": 91025,
@@ -225,7 +225,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 5,
-      "updatedAt": "2026-07-31T16:52:45.756Z"
+      "updatedAt": "2026-07-31T19:28:14.532Z"
     },
     {
       "wp": 91026,
@@ -234,7 +234,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:53:04.325Z"
+      "updatedAt": "2026-07-31T19:28:33.084Z"
     },
     {
       "wp": 91027,
@@ -243,7 +243,7 @@
       "availableCount": 198,
       "blockedCount": 15,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:53:23.018Z"
+      "updatedAt": "2026-07-31T19:28:51.648Z"
     },
     {
       "wp": 91028,
@@ -252,7 +252,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:53:41.692Z"
+      "updatedAt": "2026-07-31T19:29:10.145Z"
     },
     {
       "wp": 91029,
@@ -261,7 +261,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:54:00.428Z"
+      "updatedAt": "2026-07-31T19:29:28.662Z"
     },
     {
       "wp": 91030,
@@ -270,7 +270,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:54:19.045Z"
+      "updatedAt": "2026-07-31T19:29:47.309Z"
     },
     {
       "wp": 91031,
@@ -279,7 +279,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 7,
-      "updatedAt": "2026-07-31T16:54:37.613Z"
+      "updatedAt": "2026-07-31T19:30:06.213Z"
     },
     {
       "wp": 91032,
@@ -288,7 +288,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:54:56.109Z"
+      "updatedAt": "2026-07-31T19:30:24.830Z"
     },
     {
       "wp": 91033,
@@ -297,7 +297,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:55:14.695Z"
+      "updatedAt": "2026-07-31T19:30:43.741Z"
     },
     {
       "wp": 91034,
@@ -306,7 +306,7 @@
       "availableCount": 187,
       "blockedCount": 26,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:55:33.411Z"
+      "updatedAt": "2026-07-31T19:31:02.286Z"
     },
     {
       "wp": 91035,
@@ -315,7 +315,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:55:52.152Z"
+      "updatedAt": "2026-07-31T19:31:20.885Z"
     },
     {
       "wp": 91036,
@@ -324,7 +324,7 @@
       "availableCount": 193,
       "blockedCount": 20,
       "minStay": 5,
-      "updatedAt": "2026-07-31T16:56:10.758Z"
+      "updatedAt": "2026-07-31T19:31:39.448Z"
     },
     {
       "wp": 91037,
@@ -333,7 +333,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:56:29.484Z"
+      "updatedAt": "2026-07-31T19:31:57.928Z"
     },
     {
       "wp": 91038,
@@ -342,7 +342,7 @@
       "availableCount": 187,
       "blockedCount": 26,
       "minStay": 5,
-      "updatedAt": "2026-07-31T16:56:48.221Z"
+      "updatedAt": "2026-07-31T19:32:16.767Z"
     },
     {
       "wp": 91039,
@@ -351,7 +351,7 @@
       "availableCount": 187,
       "blockedCount": 26,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:57:06.805Z"
+      "updatedAt": "2026-07-31T19:32:35.362Z"
     },
     {
       "wp": 91040,
@@ -360,7 +360,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:57:25.452Z"
+      "updatedAt": "2026-07-31T19:32:53.887Z"
     },
     {
       "wp": 91041,
@@ -369,7 +369,7 @@
       "availableCount": 196,
       "blockedCount": 17,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:57:44.016Z"
+      "updatedAt": "2026-07-31T19:33:12.412Z"
     },
     {
       "wp": 91042,
@@ -378,7 +378,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:58:02.649Z"
+      "updatedAt": "2026-07-31T19:33:31.087Z"
     },
     {
       "wp": 91043,
@@ -387,7 +387,7 @@
       "availableCount": 194,
       "blockedCount": 19,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:58:21.174Z"
+      "updatedAt": "2026-07-31T19:33:49.775Z"
     },
     {
       "wp": 91044,
@@ -396,7 +396,7 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:58:39.812Z"
+      "updatedAt": "2026-07-31T19:34:08.319Z"
     },
     {
       "wp": 91045,
@@ -405,7 +405,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:58:58.375Z"
+      "updatedAt": "2026-07-31T19:34:26.859Z"
     },
     {
       "wp": 91046,
@@ -414,7 +414,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 5,
-      "updatedAt": "2026-07-31T16:59:16.934Z"
+      "updatedAt": "2026-07-31T19:34:45.356Z"
     },
     {
       "wp": 91047,
@@ -423,7 +423,7 @@
       "availableCount": 194,
       "blockedCount": 19,
       "minStay": 4,
-      "updatedAt": "2026-07-31T16:59:35.458Z"
+      "updatedAt": "2026-07-31T19:35:03.904Z"
     },
     {
       "wp": 91048,
@@ -432,7 +432,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 3,
-      "updatedAt": "2026-07-31T16:59:54.042Z"
+      "updatedAt": "2026-07-31T19:35:22.407Z"
     },
     {
       "wp": 91049,
@@ -441,7 +441,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:00:12.621Z"
+      "updatedAt": "2026-07-31T19:35:40.928Z"
     },
     {
       "wp": 91050,
@@ -450,7 +450,7 @@
       "availableCount": 199,
       "blockedCount": 14,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:00:31.272Z"
+      "updatedAt": "2026-07-31T19:35:59.435Z"
     },
     {
       "wp": 91051,
@@ -459,7 +459,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:00:49.813Z"
+      "updatedAt": "2026-07-31T19:36:18.165Z"
     },
     {
       "wp": 91052,
@@ -468,7 +468,7 @@
       "availableCount": 186,
       "blockedCount": 27,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:01:08.372Z"
+      "updatedAt": "2026-07-31T19:36:36.649Z"
     },
     {
       "wp": 91053,
@@ -477,7 +477,7 @@
       "availableCount": 188,
       "blockedCount": 25,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:01:26.960Z"
+      "updatedAt": "2026-07-31T19:36:55.200Z"
     },
     {
       "wp": 91054,
@@ -486,7 +486,7 @@
       "availableCount": 188,
       "blockedCount": 25,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:01:45.599Z"
+      "updatedAt": "2026-07-31T19:37:14.033Z"
     },
     {
       "wp": 91055,
@@ -495,7 +495,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:02:04.218Z"
+      "updatedAt": "2026-07-31T19:37:32.558Z"
     },
     {
       "wp": 91056,
@@ -504,7 +504,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:02:22.863Z"
+      "updatedAt": "2026-07-31T19:37:51.074Z"
     },
     {
       "wp": 91057,
@@ -513,7 +513,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:02:41.412Z"
+      "updatedAt": "2026-07-31T19:38:09.627Z"
     },
     {
       "wp": 91058,
@@ -522,16 +522,16 @@
       "availableCount": 188,
       "blockedCount": 25,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:03:00.057Z"
+      "updatedAt": "2026-07-31T19:38:28.190Z"
     },
     {
       "wp": 91059,
       "title": "C08-S03 Beachtown 2 Bedroom Apartment",
       "slug": "c08-s03-beachtown-2-bedroom-apartment",
-      "availableCount": 195,
-      "blockedCount": 18,
+      "availableCount": 190,
+      "blockedCount": 23,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:03:18.661Z"
+      "updatedAt": "2026-07-31T19:38:46.687Z"
     },
     {
       "wp": 91060,
@@ -540,7 +540,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:03:37.308Z"
+      "updatedAt": "2026-07-31T19:39:05.245Z"
     },
     {
       "wp": 91061,
@@ -549,7 +549,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:03:56.005Z"
+      "updatedAt": "2026-07-31T19:39:23.788Z"
     },
     {
       "wp": 91062,
@@ -558,7 +558,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 6,
-      "updatedAt": "2026-07-31T17:04:14.678Z"
+      "updatedAt": "2026-07-31T19:39:42.616Z"
     },
     {
       "wp": 91063,
@@ -567,7 +567,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:04:33.298Z"
+      "updatedAt": "2026-07-31T19:40:01.125Z"
     },
     {
       "wp": 91064,
@@ -576,7 +576,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:04:51.892Z"
+      "updatedAt": "2026-07-31T19:40:19.694Z"
     },
     {
       "wp": 91065,
@@ -585,7 +585,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:05:10.518Z"
+      "updatedAt": "2026-07-31T19:40:38.199Z"
     },
     {
       "wp": 91066,
@@ -594,7 +594,7 @@
       "availableCount": 194,
       "blockedCount": 19,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:05:29.063Z"
+      "updatedAt": "2026-07-31T19:40:56.732Z"
     },
     {
       "wp": 91067,
@@ -603,7 +603,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:05:47.610Z"
+      "updatedAt": "2026-07-31T19:41:15.250Z"
     },
     {
       "wp": 91068,
@@ -612,7 +612,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:06:06.174Z"
+      "updatedAt": "2026-07-31T19:41:33.786Z"
     },
     {
       "wp": 91069,
@@ -621,7 +621,7 @@
       "availableCount": 186,
       "blockedCount": 27,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:06:24.818Z"
+      "updatedAt": "2026-07-31T19:41:52.316Z"
     },
     {
       "wp": 91070,
@@ -630,7 +630,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:06:43.555Z"
+      "updatedAt": "2026-07-31T19:42:10.890Z"
     },
     {
       "wp": 91071,
@@ -639,7 +639,7 @@
       "availableCount": 195,
       "blockedCount": 18,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:07:02.143Z"
+      "updatedAt": "2026-07-31T19:42:29.409Z"
     },
     {
       "wp": 91072,
@@ -648,7 +648,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:07:20.837Z"
+      "updatedAt": "2026-07-31T19:42:47.901Z"
     },
     {
       "wp": 91073,
@@ -657,7 +657,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:07:39.340Z"
+      "updatedAt": "2026-07-31T19:43:06.525Z"
     },
     {
       "wp": 91074,
@@ -666,7 +666,7 @@
       "availableCount": 151,
       "blockedCount": 62,
       "minStay": 6,
-      "updatedAt": "2026-07-31T17:07:57.926Z"
+      "updatedAt": "2026-07-31T19:43:25.025Z"
     },
     {
       "wp": 91075,
@@ -675,7 +675,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:08:16.590Z"
+      "updatedAt": "2026-07-31T19:43:43.574Z"
     },
     {
       "wp": 91076,
@@ -684,7 +684,7 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:08:35.242Z"
+      "updatedAt": "2026-07-31T19:44:02.131Z"
     },
     {
       "wp": 91077,
@@ -693,7 +693,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:08:53.779Z"
+      "updatedAt": "2026-07-31T19:44:20.657Z"
     },
     {
       "wp": 91078,
@@ -702,7 +702,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:09:12.323Z"
+      "updatedAt": "2026-07-31T19:44:39.163Z"
     },
     {
       "wp": 91079,
@@ -711,7 +711,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:09:30.934Z"
+      "updatedAt": "2026-07-31T19:44:57.785Z"
     },
     {
       "wp": 91080,
@@ -720,7 +720,7 @@
       "availableCount": 187,
       "blockedCount": 26,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:09:49.542Z"
+      "updatedAt": "2026-07-31T19:45:16.287Z"
     },
     {
       "wp": 91081,
@@ -729,7 +729,7 @@
       "availableCount": 194,
       "blockedCount": 19,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:10:08.180Z"
+      "updatedAt": "2026-07-31T19:45:34.805Z"
     },
     {
       "wp": 91082,
@@ -738,7 +738,7 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:10:26.757Z"
+      "updatedAt": "2026-07-31T19:45:53.474Z"
     },
     {
       "wp": 91083,
@@ -747,7 +747,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 5,
-      "updatedAt": "2026-07-31T17:10:45.388Z"
+      "updatedAt": "2026-07-31T19:46:11.996Z"
     },
     {
       "wp": 91084,
@@ -756,7 +756,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:11:03.960Z"
+      "updatedAt": "2026-07-31T19:46:30.549Z"
     },
     {
       "wp": 91085,
@@ -765,7 +765,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:11:22.579Z"
+      "updatedAt": "2026-07-31T19:46:49.058Z"
     },
     {
       "wp": 91086,
@@ -774,7 +774,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 14,
-      "updatedAt": "2026-07-31T17:11:41.251Z"
+      "updatedAt": "2026-07-31T19:47:07.575Z"
     },
     {
       "wp": 91087,
@@ -783,7 +783,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 2,
-      "updatedAt": "2026-07-31T17:11:59.826Z"
+      "updatedAt": "2026-07-31T19:47:26.064Z"
     },
     {
       "wp": 91088,
@@ -792,7 +792,7 @@
       "availableCount": 211,
       "blockedCount": 2,
       "minStay": 4,
-      "updatedAt": "2026-07-31T17:12:18.497Z"
+      "updatedAt": "2026-07-31T19:47:44.713Z"
     },
     {
       "wp": 91089,
@@ -801,7 +801,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:12:37.062Z"
+      "updatedAt": "2026-07-31T19:48:03.251Z"
     },
     {
       "wp": 91090,
@@ -810,7 +810,7 @@
       "availableCount": 196,
       "blockedCount": 17,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:12:55.614Z"
+      "updatedAt": "2026-07-31T19:48:21.862Z"
     },
     {
       "wp": 91091,
@@ -819,7 +819,7 @@
       "availableCount": 199,
       "blockedCount": 14,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:13:14.278Z"
+      "updatedAt": "2026-07-31T19:48:40.417Z"
     },
     {
       "wp": 91092,
@@ -828,7 +828,7 @@
       "availableCount": 199,
       "blockedCount": 14,
       "minStay": 14,
-      "updatedAt": "2026-07-31T17:13:32.857Z"
+      "updatedAt": "2026-07-31T19:48:59.085Z"
     },
     {
       "wp": 91093,
@@ -837,7 +837,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:13:51.401Z"
+      "updatedAt": "2026-07-31T19:49:17.628Z"
     },
     {
       "wp": 91094,
@@ -846,7 +846,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:14:10.037Z"
+      "updatedAt": "2026-07-31T19:49:36.113Z"
     },
     {
       "wp": 91095,
@@ -855,7 +855,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:14:28.653Z"
+      "updatedAt": "2026-07-31T19:49:54.632Z"
     },
     {
       "wp": 91096,
@@ -864,7 +864,7 @@
       "availableCount": 205,
       "blockedCount": 8,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:14:47.338Z"
+      "updatedAt": "2026-07-31T19:50:13.212Z"
     },
     {
       "wp": 91097,
@@ -873,7 +873,7 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:15:05.901Z"
+      "updatedAt": "2026-07-31T19:50:31.759Z"
     },
     {
       "wp": 91098,
@@ -882,7 +882,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:15:24.549Z"
+      "updatedAt": "2026-07-31T19:50:50.379Z"
     },
     {
       "wp": 91099,
@@ -891,7 +891,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:15:43.141Z"
+      "updatedAt": "2026-07-31T19:51:08.873Z"
     },
     {
       "wp": 91100,
@@ -900,7 +900,7 @@
       "availableCount": 184,
       "blockedCount": 29,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:16:01.724Z"
+      "updatedAt": "2026-07-31T19:51:27.515Z"
     },
     {
       "wp": 91101,
@@ -909,7 +909,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:16:20.448Z"
+      "updatedAt": "2026-07-31T19:51:46.085Z"
     },
     {
       "wp": 91102,
@@ -918,7 +918,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:16:39.190Z"
+      "updatedAt": "2026-07-31T19:52:04.667Z"
     },
     {
       "wp": 91103,
@@ -927,7 +927,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:16:57.850Z"
+      "updatedAt": "2026-07-31T19:52:23.373Z"
     },
     {
       "wp": 91104,
@@ -936,7 +936,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:17:16.500Z"
+      "updatedAt": "2026-07-31T19:52:41.878Z"
     },
     {
       "wp": 91105,
@@ -945,7 +945,7 @@
       "availableCount": 188,
       "blockedCount": 25,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:17:34.994Z"
+      "updatedAt": "2026-07-31T19:53:00.444Z"
     },
     {
       "wp": 91106,
@@ -954,7 +954,7 @@
       "availableCount": 194,
       "blockedCount": 19,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:17:53.612Z"
+      "updatedAt": "2026-07-31T19:53:19.445Z"
     },
     {
       "wp": 91107,
@@ -963,7 +963,7 @@
       "availableCount": 151,
       "blockedCount": 62,
       "minStay": 20,
-      "updatedAt": "2026-07-31T17:18:12.228Z"
+      "updatedAt": "2026-07-31T19:53:37.971Z"
     },
     {
       "wp": 91108,
@@ -972,7 +972,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:18:30.863Z"
+      "updatedAt": "2026-07-31T19:53:56.490Z"
     },
     {
       "wp": 91109,
@@ -981,7 +981,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:18:49.472Z"
+      "updatedAt": "2026-07-31T19:54:15.003Z"
     },
     {
       "wp": 91110,
@@ -990,7 +990,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:19:08.035Z"
+      "updatedAt": "2026-07-31T19:54:33.514Z"
     },
     {
       "wp": 91111,
@@ -999,7 +999,7 @@
       "availableCount": 198,
       "blockedCount": 15,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:19:26.630Z"
+      "updatedAt": "2026-07-31T19:54:52.046Z"
     },
     {
       "wp": 91112,
@@ -1008,7 +1008,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:19:45.187Z"
+      "updatedAt": "2026-07-31T19:55:10.571Z"
     },
     {
       "wp": 91113,
@@ -1017,7 +1017,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:20:03.811Z"
+      "updatedAt": "2026-07-31T19:55:29.116Z"
     },
     {
       "wp": 91114,
@@ -1026,7 +1026,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:20:22.351Z"
+      "updatedAt": "2026-07-31T19:55:47.659Z"
     },
     {
       "wp": 91115,
@@ -1035,7 +1035,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:20:41.014Z"
+      "updatedAt": "2026-07-31T19:56:06.221Z"
     },
     {
       "wp": 91116,
@@ -1044,7 +1044,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:20:59.612Z"
+      "updatedAt": "2026-07-31T19:56:24.766Z"
     },
     {
       "wp": 91117,
@@ -1053,7 +1053,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:21:18.222Z"
+      "updatedAt": "2026-07-31T19:56:43.403Z"
     },
     {
       "wp": 91118,
@@ -1062,7 +1062,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:21:36.890Z"
+      "updatedAt": "2026-07-31T19:57:01.916Z"
     },
     {
       "wp": 91119,
@@ -1071,7 +1071,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:21:55.545Z"
+      "updatedAt": "2026-07-31T19:57:20.466Z"
     },
     {
       "wp": 91120,
@@ -1080,7 +1080,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:22:14.134Z"
+      "updatedAt": "2026-07-31T19:57:39.092Z"
     },
     {
       "wp": 91121,
@@ -1089,7 +1089,7 @@
       "availableCount": 199,
       "blockedCount": 14,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:22:32.727Z"
+      "updatedAt": "2026-07-31T19:57:57.587Z"
     },
     {
       "wp": 91122,
@@ -1098,7 +1098,7 @@
       "availableCount": 189,
       "blockedCount": 24,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:22:51.356Z"
+      "updatedAt": "2026-07-31T19:58:16.423Z"
     },
     {
       "wp": 91123,
@@ -1107,7 +1107,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:23:09.970Z"
+      "updatedAt": "2026-07-31T19:58:34.957Z"
     },
     {
       "wp": 91124,
@@ -1116,7 +1116,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:23:28.520Z"
+      "updatedAt": "2026-07-31T19:58:53.508Z"
     },
     {
       "wp": 91125,
@@ -1125,7 +1125,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:23:47.156Z"
+      "updatedAt": "2026-07-31T19:59:12.201Z"
     },
     {
       "wp": 91126,
@@ -1134,7 +1134,7 @@
       "availableCount": 205,
       "blockedCount": 8,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:24:05.672Z"
+      "updatedAt": "2026-07-31T19:59:30.764Z"
     },
     {
       "wp": 91127,
@@ -1143,7 +1143,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:24:24.245Z"
+      "updatedAt": "2026-07-31T19:59:49.267Z"
     },
     {
       "wp": 91128,
@@ -1152,7 +1152,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:24:42.913Z"
+      "updatedAt": "2026-07-31T20:00:07.812Z"
     },
     {
       "wp": 91129,
@@ -1161,7 +1161,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:25:01.510Z"
+      "updatedAt": "2026-07-31T20:00:26.696Z"
     },
     {
       "wp": 91130,
@@ -1170,7 +1170,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:25:20.310Z"
+      "updatedAt": "2026-07-31T20:00:45.328Z"
     },
     {
       "wp": 91131,
@@ -1179,7 +1179,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:25:38.998Z"
+      "updatedAt": "2026-07-31T20:01:03.901Z"
     },
     {
       "wp": 91132,
@@ -1188,7 +1188,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:25:57.684Z"
+      "updatedAt": "2026-07-31T20:01:22.522Z"
     },
     {
       "wp": 91133,
@@ -1197,7 +1197,7 @@
       "availableCount": 198,
       "blockedCount": 15,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:26:16.328Z"
+      "updatedAt": "2026-07-31T20:01:41.157Z"
     },
     {
       "wp": 91134,
@@ -1206,7 +1206,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:26:34.970Z"
+      "updatedAt": "2026-07-31T20:01:59.682Z"
     },
     {
       "wp": 91135,
@@ -1215,7 +1215,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:26:53.524Z"
+      "updatedAt": "2026-07-31T20:02:18.405Z"
     },
     {
       "wp": 91136,
@@ -1224,7 +1224,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:27:12.203Z"
+      "updatedAt": "2026-07-31T20:02:36.917Z"
     },
     {
       "wp": 91137,
@@ -1233,7 +1233,7 @@
       "availableCount": 198,
       "blockedCount": 15,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:27:30.817Z"
+      "updatedAt": "2026-07-31T20:02:55.474Z"
     },
     {
       "wp": 91138,
@@ -1242,7 +1242,7 @@
       "availableCount": 190,
       "blockedCount": 23,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:27:49.373Z"
+      "updatedAt": "2026-07-31T20:03:14.076Z"
     },
     {
       "wp": 91139,
@@ -1251,7 +1251,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:28:08.008Z"
+      "updatedAt": "2026-07-31T20:03:32.751Z"
     },
     {
       "wp": 91140,
@@ -1260,7 +1260,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:28:26.794Z"
+      "updatedAt": "2026-07-31T20:03:51.345Z"
     },
     {
       "wp": 91141,
@@ -1269,7 +1269,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:28:45.375Z"
+      "updatedAt": "2026-07-31T20:04:09.958Z"
     },
     {
       "wp": 91142,
@@ -1278,7 +1278,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:29:03.986Z"
+      "updatedAt": "2026-07-31T20:04:28.457Z"
     },
     {
       "wp": 91143,
@@ -1287,7 +1287,7 @@
       "availableCount": 186,
       "blockedCount": 27,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:29:22.475Z"
+      "updatedAt": "2026-07-31T20:04:46.934Z"
     },
     {
       "wp": 91144,
@@ -1296,7 +1296,7 @@
       "availableCount": 183,
       "blockedCount": 30,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:29:41.077Z"
+      "updatedAt": "2026-07-31T20:05:05.479Z"
     },
     {
       "wp": 91145,
@@ -1305,7 +1305,7 @@
       "availableCount": 185,
       "blockedCount": 28,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:29:59.698Z"
+      "updatedAt": "2026-07-31T20:05:23.984Z"
     },
     {
       "wp": 91146,
@@ -1314,7 +1314,7 @@
       "availableCount": 192,
       "blockedCount": 21,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:30:18.426Z"
+      "updatedAt": "2026-07-31T20:05:42.567Z"
     },
     {
       "wp": 91147,
@@ -1323,7 +1323,7 @@
       "availableCount": 181,
       "blockedCount": 32,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:30:37.011Z"
+      "updatedAt": "2026-07-31T20:06:01.074Z"
     },
     {
       "wp": 91148,
@@ -1332,7 +1332,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:30:55.526Z"
+      "updatedAt": "2026-07-31T20:06:19.666Z"
     },
     {
       "wp": 91149,
@@ -1341,7 +1341,7 @@
       "availableCount": 197,
       "blockedCount": 16,
       "minStay": 10,
-      "updatedAt": "2026-07-31T17:31:14.061Z"
+      "updatedAt": "2026-07-31T20:06:38.173Z"
     },
     {
       "wp": 91150,
@@ -1350,7 +1350,7 @@
       "availableCount": 191,
       "blockedCount": 22,
       "minStay": 3,
-      "updatedAt": "2026-07-31T17:31:32.762Z"
+      "updatedAt": "2026-07-31T20:06:56.687Z"
     },
     {
       "wp": 91151,
@@ -1359,7 +1359,7 @@
       "availableCount": 212,
       "blockedCount": 1,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:31:51.324Z"
+      "updatedAt": "2026-07-31T20:07:15.216Z"
     },
     {
       "wp": 91152,
@@ -1368,7 +1368,7 @@
       "availableCount": 182,
       "blockedCount": 31,
       "minStay": 7,
-      "updatedAt": "2026-07-31T17:32:10.147Z"
+      "updatedAt": "2026-07-31T20:07:33.721Z"
     }
   ]
 }
