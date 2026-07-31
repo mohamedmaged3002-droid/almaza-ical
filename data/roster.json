@@ -12,12 +12,12 @@
     "slug": "e06-f03-beachtown-2-bedrooms-apartment"
   },
   {
-    "pageId": "5272801",
-    "slug": "e02-g06-beachtown-2-bedroom-apartment"
-  },
-  {
     "pageId": "5329844",
     "slug": "e01-g08-beachtown-2-bedroom-apartment"
+  },
+  {
+    "pageId": "5272801",
+    "slug": "e02-g06-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5214912",
@@ -48,20 +48,16 @@
     "slug": "c02-f04-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5214767",
-    "slug": "d01-f02-beachtown-2-bedroom-apartment"
-  },
-  {
     "pageId": "5382350",
     "slug": "c02-s04-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5214770",
-    "slug": "b02-s03-beachtown-2-bedroom-apartment"
+    "pageId": "5214767",
+    "slug": "d01-f02-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5265842",
-    "slug": "c08-f01-beachtown-2-bedroom-apartment"
+    "pageId": "5214770",
+    "slug": "b02-s03-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5287592",
@@ -80,12 +76,16 @@
     "slug": "d07-f08-beachtown-2-bedroom-maids-room-apartment"
   },
   {
-    "pageId": "5249987",
-    "slug": "c08-f05-beachtown-2-bedroom-apartment"
+    "pageId": "5265842",
+    "slug": "c08-f01-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5272455",
     "slug": "e01-s02-beachtown-2-bedroom-apartment"
+  },
+  {
+    "pageId": "5249987",
+    "slug": "c08-f05-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5430752",
@@ -116,10 +116,6 @@
     "slug": "c08-s05-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5249351",
-    "slug": "d01-g07-beachtown-2-bedroom-apartment"
-  },
-  {
     "pageId": "5215250",
     "slug": "b09-s03-beachtown-2-bedroom-apartment"
   },
@@ -130,10 +126,6 @@
   {
     "pageId": "5214913",
     "slug": "d01-s03-beachtown-2-bedroom-apartment"
-  },
-  {
-    "pageId": "5214764",
-    "slug": "c01-s08-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5214854",
@@ -148,6 +140,14 @@
     "slug": "d07-s06-beachtown-2-bedroom-apartment"
   },
   {
+    "pageId": "5249351",
+    "slug": "d01-g07-beachtown-2-bedroom-apartment"
+  },
+  {
+    "pageId": "5214764",
+    "slug": "c01-s08-beachtown-2-bedroom-apartment"
+  },
+  {
     "pageId": "5490681",
     "slug": "c03-g03-beachtown-2-bedroom-apartment"
   },
@@ -156,12 +156,12 @@
     "slug": "d01-s13-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5230209",
-    "slug": "c02-f07-beachtown-2-bedroom-maids-room-apartment"
-  },
-  {
     "pageId": "5258988",
     "slug": "e01-g06-beachtown-2-bedroom-apartment"
+  },
+  {
+    "pageId": "5230209",
+    "slug": "c02-f07-beachtown-2-bedroom-maids-room-apartment"
   },
   {
     "pageId": "5526103",
@@ -254,6 +254,10 @@
   {
     "pageId": "5238008",
     "slug": "f01-s03-beachtown-2-bedroom-maids-room-apartment"
+  },
+  {
+    "pageId": "5240267",
+    "slug": "f02-g03-beachtown-2-bedroom-maids-room-apartment"
   },
   {
     "pageId": "5313307",
@@ -396,24 +400,20 @@
     "slug": "b02-g03-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5258983",
-    "slug": "e02-f04-beachtown-2-bedroom-apartment"
-  },
-  {
     "pageId": "5294715",
     "slug": "e01-f03-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5370212",
-    "slug": "f01-g06-beachtown-2-bedroom-apartment"
+    "pageId": "5258983",
+    "slug": "e02-f04-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5283580",
     "slug": "d01-f10-beachtown-2-bedroom-apartment"
   },
   {
-    "pageId": "5272710",
-    "slug": "d02-s03-beachtown-2-bedroom-apartment"
+    "pageId": "5370212",
+    "slug": "f01-g06-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5214763",
@@ -426,6 +426,10 @@
   {
     "pageId": "5355421",
     "slug": "d08-s02-beachtown-2-bedroom-apartment"
+  },
+  {
+    "pageId": "5272710",
+    "slug": "d02-s03-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5214845",
@@ -456,6 +460,10 @@
     "slug": "b09-f06-beachtown-2-bedroom-apartment"
   },
   {
+    "pageId": "5596277",
+    "slug": "c01-g08-beachtown-2-bedroom-apartment"
+  },
+  {
     "pageId": "5308748",
     "slug": "f01-f08-beachtown-2-bedroom-maids-room-apartment"
   },
@@ -476,20 +484,20 @@
     "slug": "e06-g02-beachtown-2-bedroom-maids-room-apartment"
   },
   {
-    "pageId": "5359554",
-    "slug": "f05-beachtown-3-bedroom-maids-room-townhome"
-  },
-  {
     "pageId": "5265861",
     "slug": "d01-g01-beachtown-2-bedroom-maids-room-apartment"
   },
   {
-    "pageId": "5351454",
-    "slug": "e06-s04-beachtown-2-bedroom-maids-room-apartment"
+    "pageId": "5359554",
+    "slug": "f05-beachtown-3-bedroom-maids-room-townhome"
   },
   {
     "pageId": "5215532",
     "slug": "f01-s07-beachtown-2-bedroom-maids-room-apartment"
+  },
+  {
+    "pageId": "5351454",
+    "slug": "e06-s04-beachtown-2-bedroom-maids-room-apartment"
   },
   {
     "pageId": "5374251",
@@ -498,10 +506,6 @@
   {
     "pageId": "5355407",
     "slug": "f01-g08-beachtown-2-bedroom-maids-room"
-  },
-  {
-    "pageId": "5240267",
-    "slug": "f02-g03-beachtown-2-bedroom-maids-room-apartment"
   },
   {
     "pageId": "5268601",
@@ -534,10 +538,6 @@
   {
     "pageId": "5214958",
     "slug": "f15-beachtown-4-bedroom-maids-room-townhome"
-  },
-  {
-    "pageId": "5409033",
-    "slug": "67a-bayhomes-3-bedroom-maids-room-quad-chalet"
   },
   {
     "pageId": "5450628",
