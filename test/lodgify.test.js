@@ -172,3 +172,17 @@ test('dailyPricesForSeason returns [] when there is no default rate', () => {
   const { dailyPricesForSeason } = require('../src/lodgify');
   assert.deepStrictEqual(dailyPricesForSeason({ defaultRate: null, periods: [] }, '2026-06-01', '2026-10-31'), []);
 });
+
+test('collapseMinStay folds contiguous same-min dates into ranges', () => {
+  const { collapseMinStay } = require('../src/lodgify');
+  assert.deepStrictEqual(collapseMinStay({}), []);
+  // 3-night shoulder block, then a 7-night peak block, then a gap + island.
+  assert.deepStrictEqual(
+    collapseMinStay({ '2026-06-01': 3, '2026-06-02': 3, '2026-07-01': 7, '2026-07-02': 7, '2026-08-05': 7 }),
+    [
+      { from: '2026-06-01', to: '2026-06-02', min: 3 },
+      { from: '2026-07-01', to: '2026-07-02', min: 7 },
+      { from: '2026-08-05', to: '2026-08-05', min: 7 },
+    ],
+  );
+});

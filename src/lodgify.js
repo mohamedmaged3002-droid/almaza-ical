@@ -146,4 +146,24 @@ function parseCalendar(json = {}) {
   return { blocked, available, minStay: minStayMax, minStayMin, minStayMax, minStayByDate, covered: days.length };
 }
 
-module.exports = { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily, dailyPricesForSeason, stripHtml, normalizeImages };
+// Collapse a per-date min-stay map into contiguous [from,to] ranges so the
+// published index stays small (a season of dates → a handful of rows) and the
+// website can answer "what's the minimum for THIS check-in date?" exactly,
+// instead of applying one peak number to the whole year (L-054).
+function collapseMinStay(minStayByDate = {}) {
+  const out = [];
+  for (const date of Object.keys(minStayByDate).sort()) {
+    const min = minStayByDate[date];
+    const last = out[out.length - 1];
+    const nextOfLast = last && (() => {
+      const d = new Date(`${last.to}T12:00:00Z`);
+      d.setUTCDate(d.getUTCDate() + 1);
+      return d.toISOString().slice(0, 10);
+    })();
+    if (last && last.min === min && nextOfLast === date) last.to = date;
+    else out.push({ from: date, to: date, min });
+  }
+  return out;
+}
+
+module.exports = { parseJsonLd, parseRates, parseCalendar, collapseMinStay, ratePeriodsToDaily, dailyPricesForSeason, stripHtml, normalizeImages };

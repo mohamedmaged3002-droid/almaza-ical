@@ -13,7 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const cfg = require('./src/config');
 const { openBrowser, fetchJsonInPage, sleep } = require('./src/browser');
-const { parseCalendar } = require('./src/lodgify');
+const { parseCalendar, collapseMinStay } = require('./src/lodgify');
 const { collapseBlocked, iso } = require('./src/dates');
 const { buildIcal } = require('./src/ical');
 const { shouldWrite } = require('./src/guard');
@@ -160,6 +160,10 @@ async function main(page) {
       minStay: result.minStay,
       minStayMin: result.minStayMin ?? null,
       minStayMax: result.minStayMax ?? null,
+      // Per-date minimums, range-compressed. bluekeys.co reads this so a guest
+      // gets the minimum that applies to THEIR check-in date (3 nights in
+      // shoulder season) instead of the season's peak everywhere (L-054).
+      minStayRanges: collapseMinStay(result.minStayByDate || {}),
       updatedAt: new Date().toISOString(),
     };
     console.log(`OK ${u.wp} ${u.title} — ${result.blocked.length} blocked / ${result.available} open`);
