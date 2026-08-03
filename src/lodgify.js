@@ -120,14 +120,30 @@ function dailyPricesForSeason(rates, seasonStart, seasonEnd) {
 function parseCalendar(json = {}) {
   const days = (json && json.calendar) || [];
   const blocked = [];
+  const minStayByDate = {};
   let available = 0;
-  let minStay = null;
+  let minStayMin = null;
+  let minStayMax = null;
   for (const d of days) {
     if (d.isAvailable) available += 1;
     else blocked.push(d.date);
-    if (minStay == null && typeof d.minimalStay === 'number') minStay = d.minimalStay;
+    // Almaza sets min-stay PER DATE (e.g. 3 in shoulder season, 7 in peak) — the
+    // old code took the FIRST day's value and ignored the rest, which stored an
+    // arbitrary number that under-stated the real minimum on peak dates (we then
+    // told guests "3-night minimum" on a unit Almaza only rents by the week).
+    // Keep the whole per-date map, plus the min/max across the horizon.
+    if (typeof d.minimalStay === 'number') {
+      minStayByDate[d.date] = d.minimalStay;
+      if (minStayMin == null || d.minimalStay < minStayMin) minStayMin = d.minimalStay;
+      if (minStayMax == null || d.minimalStay > minStayMax) minStayMax = d.minimalStay;
+    }
   }
-  return { blocked, available, minStay, covered: days.length };
+  // `minStay` is the PEAK (max) requirement — the fail-safe single number. Quoting
+  // a shorter minimum than Almaza enforces means the booking gets rejected after
+  // we've already promised the guest (and on an OTA that's a penalised
+  // cancellation), so a consumer that can only hold one number must hold this one.
+  // Per-date consumers should read `minStayByDate`.
+  return { blocked, available, minStay: minStayMax, minStayMin, minStayMax, minStayByDate, covered: days.length };
 }
 
 module.exports = { parseJsonLd, parseRates, parseCalendar, ratePeriodsToDaily, dailyPricesForSeason, stripHtml, normalizeImages };

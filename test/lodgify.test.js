@@ -100,7 +100,23 @@ test('parsers do not throw on empty/undefined payloads and return sane empties',
   assert.strictEqual(u.lng, null);
   assert.strictEqual(u.bedrooms, null);
 
-  assert.deepStrictEqual(parseCalendar({}), { blocked: [], available: 0, minStay: null, covered: 0 });
+  assert.deepStrictEqual(parseCalendar({}), {
+    blocked: [], available: 0, minStay: null,
+    minStayMin: null, minStayMax: null, minStayByDate: {}, covered: 0,
+  });
+
+  // Regression: min-stay varies PER DATE (Almaza runs 3 nights in shoulder
+  // season, 7 in peak). The old parser took the FIRST day's value, so a unit
+  // whose horizon started on a 3-night date was published as "3-night minimum"
+  // even where Almaza only rents by the week. `minStay` must be the PEAK.
+  const varied = parseCalendar({ calendar: [
+    { date: '2026-06-01', isAvailable: true, minimalStay: 3 },
+    { date: '2026-08-10', isAvailable: true, minimalStay: 7 },
+  ] });
+  assert.strictEqual(varied.minStay, 7, 'minStay must be the peak, not day one');
+  assert.strictEqual(varied.minStayMin, 3);
+  assert.strictEqual(varied.minStayMax, 7);
+  assert.deepStrictEqual(varied.minStayByDate, { '2026-06-01': 3, '2026-08-10': 7 });
 
   assert.deepStrictEqual(parseRates({}), { roomId: null, currency: null, defaultRate: null, periods: [] });
 

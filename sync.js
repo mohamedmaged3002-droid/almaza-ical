@@ -53,7 +53,6 @@ function loadPrevIndex() {
 async function fetchCalendar(page, unit, horizonNights) {
   const start = new Date(); start.setHours(12, 0, 0, 0);
   const byDate = new Map();
-  let minStay = null;
   let cursor = start;
   let guard = 0;
 
@@ -63,7 +62,6 @@ async function fetchCalendar(page, unit, horizonNights) {
     const days = json.calendar || [];
     if (!days.length) break;
     for (const d of days) if (!byDate.has(d.date)) byDate.set(d.date, d);
-    if (minStay == null) minStay = parseCalendar(json).minStay;
 
     const last = days[days.length - 1].date;
     const next = new Date(last); next.setHours(12, 0, 0, 0); next.setDate(next.getDate() + 1);
@@ -72,8 +70,10 @@ async function fetchCalendar(page, unit, horizonNights) {
     await sleep(cfg.REQUEST_DELAY_MS);
   }
 
+  // Parse the FULL merged horizon (was: min-stay taken from the first chunk only,
+  // which pinned it to whatever today's date happened to require).
   const days = [...byDate.values()].slice(0, horizonNights);
-  return { ...parseCalendar({ calendar: days }), minStay };
+  return parseCalendar({ calendar: days });
 }
 
 // Wrap the per-unit calendar fetch in polite retry-with-backoff. On a thrown
@@ -154,7 +154,12 @@ async function main(page) {
       wp: u.wp, title: u.title, slug: u.slug,
       availableCount: result.available,
       blockedCount: result.blocked.length,
+      // minStay = the PEAK requirement across the horizon (fail-safe single
+      // number); min/max expose the spread so a consumer can show "3–7 nights"
+      // instead of pretending one value covers the whole season.
       minStay: result.minStay,
+      minStayMin: result.minStayMin ?? null,
+      minStayMax: result.minStayMax ?? null,
       updatedAt: new Date().toISOString(),
     };
     console.log(`OK ${u.wp} ${u.title} — ${result.blocked.length} blocked / ${result.available} open`);
