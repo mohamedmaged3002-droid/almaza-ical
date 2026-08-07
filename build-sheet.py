@@ -253,14 +253,14 @@ def build_master(ws, units, min_stays, drive_links):
     ws.append([f"One row per unit. Prices (EGP) in the Monthly Prices / Price Ranges tabs ALREADY INCLUDE "
                f"BlueKeys' 10% markup — list them as-is (do NOT add anything). 'ota_eligible' = YES when the "
                f"unit has >= {ELIG_MIN} available nights (not blocked) between today and 1 Oct 2026; refreshes daily. "
-               f"'min_stay_aug' = minimum nights for a {MIN_STAY_MONTH_LABEL} CHECK-IN — Almaza sets min-stay per date and it "
+               f"'min_stay' = minimum nights for a {MIN_STAY_MONTH_LABEL} CHECK-IN — Almaza sets min-stay per date and it "
                f"changes by month (most units go to 7 nights from September), so do NOT reuse this number for other months."])
     ws.append([])
     cols = ["wp_post_id", "source_code", "operator_unit_code",
             "lodgify_property_id", "lodgify_room_id",
             "sub_community", "title", "property_type", "guests_bluekeys", "guests_operator",
             "bedrooms", "beds", "bathrooms",
-            "default_rate_egp", "min_stay_aug", "checkin_time", "checkout_time",
+            "default_rate_egp", "min_stay", "checkin_time", "checkout_time",
             "description", "amenities", "photos_drive_folder", "photo_count", "ical_url",
             "lat", "lng", "source_url", "avail_nights_to_1oct", "ota_eligible"]
     ws.append(cols)
@@ -299,7 +299,7 @@ def build_master(ws, units, min_stays, drive_links):
         r += 1
     widths = {"title": 42, "sub_community": 20, "amenities": 50, "photos_drive_folder": 56,
               "ical_url": 56, "source_url": 56, "checkin_time": 12, "checkout_time": 16,
-              "default_rate_egp": 15, "min_stay_aug": 13, "avail_nights_to_1oct": 20, "ota_eligible": 13,
+              "default_rate_egp": 15, "min_stay": 13, "avail_nights_to_1oct": 20, "ota_eligible": 13,
               "lodgify_property_id": 16, "lodgify_room_id": 15, "beds": 6, "description": 70}
     for i, c in enumerate(cols, 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = widths.get(c, 13)
