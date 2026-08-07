@@ -98,7 +98,24 @@ def photo_count(u):
     return u["photoCount"] if "photoCount" in u else len(u.get("photos") or [])
 
 
+# The month the OTA sheet quotes min-stay for. Almaza sets minimum stay PER DATE
+# and it changes month to month (most units are 3-5 nights in August but 7 from
+# September on), so ONE season-wide number is wrong for the team listing August
+# inventory — they'd enter 7 and lose every legitimate short August booking.
+MIN_STAY_MONTH_START = "2026-08-01"
+MIN_STAY_MONTH_END = "2026-08-31"
+MIN_STAY_MONTH_LABEL = "Aug '26"
+
+
 def load_min_stays():
+    """wp -> minimum nights for a check-in in MIN_STAY_MONTH.
+
+    Read from the per-date `minStayRanges` the sync publishes. 148 of 152 units
+    have a single value across August; for the handful that change mid-month we
+    take the STRICTER (max) value — quoting the shorter one would let an OTA
+    guest book a stay Almaza then rejects, which on an OTA is a penalised
+    cancellation. Falls back to the season peak (`minStay`) if a unit has no
+    ranges yet."""
     if not os.path.exists(INDEX_JSON):
         return {}
     try:
@@ -106,7 +123,21 @@ def load_min_stays():
             data = json.load(f)
     except (json.JSONDecodeError, OSError):
         return {}
-    return {p["wp"]: p.get("minStay") for p in data.get("properties", []) if p.get("wp") is not None}
+    out = {}
+    for p in data.get("properties", []):
+        wp = p.get("wp")
+        if wp is None:
+            continue
+        mins = [
+            r["min"]
+            for r in (p.get("minStayRanges") or [])
+            if isinstance(r, dict)
+            and isinstance(r.get("min"), int)
+            and r.get("from", "") <= MIN_STAY_MONTH_END
+            and r.get("to", "") >= MIN_STAY_MONTH_START
+        ]
+        out[wp] = max(mins) if mins else p.get("minStay")
+    return out
 
 
 def load_daily():
@@ -221,13 +252,15 @@ def build_master(ws, units, min_stays, drive_links):
     ws.append(["Almaza Bay — OTA listing pack"])
     ws.append([f"One row per unit. Prices (EGP) in the Monthly Prices / Price Ranges tabs ALREADY INCLUDE "
                f"BlueKeys' 10% markup — list them as-is (do NOT add anything). 'ota_eligible' = YES when the "
-               f"unit has >= {ELIG_MIN} available nights (not blocked) between today and 1 Oct 2026; refreshes daily."])
+               f"unit has >= {ELIG_MIN} available nights (not blocked) between today and 1 Oct 2026; refreshes daily. "
+               f"'min_stay_aug' = minimum nights for a {MIN_STAY_MONTH_LABEL} CHECK-IN — Almaza sets min-stay per date and it "
+               f"changes by month (most units go to 7 nights from September), so do NOT reuse this number for other months."])
     ws.append([])
     cols = ["wp_post_id", "source_code", "operator_unit_code",
             "lodgify_property_id", "lodgify_room_id",
             "sub_community", "title", "property_type", "guests_bluekeys", "guests_operator",
             "bedrooms", "beds", "bathrooms",
-            "default_rate_egp", "min_stay", "checkin_time", "checkout_time",
+            "default_rate_egp", "min_stay_aug", "checkin_time", "checkout_time",
             "description", "amenities", "photos_drive_folder", "photo_count", "ical_url",
             "lat", "lng", "source_url", "avail_nights_to_1oct", "ota_eligible"]
     ws.append(cols)
@@ -266,7 +299,7 @@ def build_master(ws, units, min_stays, drive_links):
         r += 1
     widths = {"title": 42, "sub_community": 20, "amenities": 50, "photos_drive_folder": 56,
               "ical_url": 56, "source_url": 56, "checkin_time": 12, "checkout_time": 16,
-              "default_rate_egp": 15, "avail_nights_to_1oct": 20, "ota_eligible": 13,
+              "default_rate_egp": 15, "min_stay_aug": 13, "avail_nights_to_1oct": 20, "ota_eligible": 13,
               "lodgify_property_id": 16, "lodgify_room_id": 15, "beds": 6, "description": 70}
     for i, c in enumerate(cols, 1):
         ws.column_dimensions[ws.cell(4, i).column_letter].width = widths.get(c, 13)
