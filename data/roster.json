@@ -8,10 +8,6 @@
     "slug": "f01-s1-residences-1-bedroom-chalet"
   },
   {
-    "pageId": "5339655",
-    "slug": "e06-f03-beachtown-2-bedrooms-apartment"
-  },
-  {
     "pageId": "5272801",
     "slug": "e02-g06-beachtown-2-bedroom-apartment"
   },
@@ -22,10 +18,6 @@
   {
     "pageId": "5214912",
     "slug": "c02-g04-beachtown-2-bedroom-apartment"
-  },
-  {
-    "pageId": "5214861",
-    "slug": "d08-g03-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5396186",
@@ -94,10 +86,6 @@
   {
     "pageId": "5450639",
     "slug": "c01-s07-beachtown-2-bedroom-maids-room-apartment"
-  },
-  {
-    "pageId": "5351437",
-    "slug": "c01-f02-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5308737",
@@ -180,6 +168,14 @@
     "slug": "d01-s11-beachtown-2-bedroom-maids-room-apartment"
   },
   {
+    "pageId": "5339655",
+    "slug": "e06-f03-beachtown-2-bedrooms-apartment"
+  },
+  {
+    "pageId": "5214861",
+    "slug": "d08-g03-beachtown-2-bedroom-apartment"
+  },
+  {
     "pageId": "5285936",
     "slug": "c02-f03-beachtown-2-bedroom-apartment"
   },
@@ -236,6 +232,10 @@
     "slug": "b01-f04-beachtown-2-bedroom-aprtament"
   },
   {
+    "pageId": "5351437",
+    "slug": "c01-f02-beachtown-2-bedroom-apartment"
+  },
+  {
     "pageId": "5222140",
     "slug": "d07-s02-beachtown-2-bedroom-maids-room-apartment"
   },
@@ -250,10 +250,6 @@
   {
     "pageId": "5240267",
     "slug": "f02-g03-beachtown-2-bedroom-maids-room-apartment"
-  },
-  {
-    "pageId": "5313307",
-    "slug": "e05-g-residences-3-bedroom-maids-room-chalet"
   },
   {
     "pageId": "5242524",
@@ -340,16 +336,16 @@
     "slug": "e09-beachtown-3-bedroom-maids-room-townhome"
   },
   {
+    "pageId": "5516248",
+    "slug": "55c-bayhomes-6-bedroom-quad-chalet"
+  },
+  {
     "pageId": "5217397",
     "slug": "e22-beachtown-7-bedroom-maids-room-townvilla"
   },
   {
     "pageId": "5396662",
     "slug": "d47-residences-4-bedrooms-standalone-villa"
-  },
-  {
-    "pageId": "5516248",
-    "slug": "55c-bayhomes-6-bedroom-quad-chalet"
   },
   {
     "pageId": "5520185",
@@ -550,6 +546,10 @@
   {
     "pageId": "5358108",
     "slug": "c01-f07-beachtown-2-bedroom-maids-room-apartment"
+  },
+  {
+    "pageId": "5313307",
+    "slug": "e05-g-residences-3-bedroom-maids-room-chalet"
   },
   {
     "pageId": "5254643",
