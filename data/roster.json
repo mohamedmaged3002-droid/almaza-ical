@@ -108,6 +108,10 @@
     "slug": "c02-s06-beachtown-2-bedroom-apartment"
   },
   {
+    "pageId": "5339655",
+    "slug": "e06-f03-beachtown-2-bedrooms-apartment"
+  },
+  {
     "pageId": "5253654",
     "slug": "d01-g02-beachtown-2-bedroom-apartment"
   },
@@ -164,10 +168,6 @@
     "slug": "c02-f07-beachtown-2-bedroom-maids-room-apartment"
   },
   {
-    "pageId": "5258988",
-    "slug": "e01-g06-beachtown-2-bedroom-apartment"
-  },
-  {
     "pageId": "5526103",
     "slug": "f11-beachtown-4-bedroom-maids-room-townvilla"
   },
@@ -182,10 +182,6 @@
   {
     "pageId": "5468939",
     "slug": "d01-s11-beachtown-2-bedroom-maids-room-apartment"
-  },
-  {
-    "pageId": "5339655",
-    "slug": "e06-f03-beachtown-2-bedrooms-apartment"
   },
   {
     "pageId": "5214861",
@@ -272,8 +268,20 @@
     "slug": "b09-s04-beachtown-2-bedroom-aprtament"
   },
   {
+    "pageId": "5258988",
+    "slug": "e01-g06-beachtown-2-bedroom-apartment"
+  },
+  {
+    "pageId": "5583868",
+    "slug": "d07-f04-beachtown-2-bedroom-apartment"
+  },
+  {
     "pageId": "5337364",
     "slug": "c10-beachtown-3-bedroom-maids-room-townhome"
+  },
+  {
+    "pageId": "5420150",
+    "slug": "e03-f-residences-3-bedroom-chalet"
   },
   {
     "pageId": "5409422",
@@ -298,10 +306,6 @@
   {
     "pageId": "5304003",
     "slug": "d24-f-residences-3-bedroom-maids-chalet"
-  },
-  {
-    "pageId": "5583868",
-    "slug": "d07-f04-beachtown-2-bedroom-apartment"
   },
   {
     "pageId": "5242524",
@@ -524,10 +528,6 @@
     "slug": "e09-g-residences-3-bedroom-maids-chalet"
   },
   {
-    "pageId": "5420150",
-    "slug": "e03-f-residences-3-bedroom-chalet"
-  },
-  {
     "pageId": "5214958",
     "slug": "f15-beachtown-4-bedroom-maids-room-townhome"
   },
@@ -554,10 +554,6 @@
   {
     "pageId": "5411099",
     "slug": "d09-g-residences-4-bedroom-chalet"
-  },
-  {
-    "pageId": "5214982",
-    "slug": "38a-bayhomes-4-bedroom-maids-room-twin-home"
   },
   {
     "pageId": "5370293",
@@ -614,6 +610,10 @@
   {
     "pageId": "5454678",
     "slug": "d76-selection-5-bedroom-standalone-villa"
+  },
+  {
+    "pageId": "5629834",
+    "slug": "one-almaza-luxurys-2-bedrooms-maids-room-apartment"
   },
   {
     "pageId": "5420143",
